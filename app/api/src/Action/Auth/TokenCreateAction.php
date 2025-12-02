@@ -44,6 +44,7 @@ final class TokenCreateAction
         $token = $this->jwtAuth->createJwt(
             [
                 'uid' => $user['id'],
+                'cid' => $user['company_id'],
                 'name' => $user['first_name'] . ' '.$user['last_name']
             ]
         );

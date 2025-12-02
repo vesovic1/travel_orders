@@ -26,9 +26,9 @@ final class UsersListAction
         $paginationParams = \DomteraApi\Helpers\PaginationParams::process($request->getQueryParams());
 
         $users = [
-            'rows' => $this->userService->get($paginationParams),
+            'rows' => $this->userService->get($paginationParams, $request->getAttribute('cid')),
             '_meta' => [
-                'total' => $this->userService->getCount($paginationParams)
+                'total' => $this->userService->getCount($paginationParams, $request->getAttribute('cid'))
             ]
         ];
 
