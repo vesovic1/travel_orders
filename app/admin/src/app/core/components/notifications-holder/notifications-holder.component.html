@@ -1,0 +1,46 @@
+<div class="notifications top-right">
+	<div *ngFor="let notification of notificationsTr" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<div class="notifications top-center">
+	<div *ngFor="let notification of notificationsTc" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<div class="notifications top-left">
+	<div *ngFor="let notification of notificationsTl" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<div class="notifications bottom-right">
+	<div *ngFor="let notification of notificationsBr" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<div class="notifications bottom-center">
+	<div *ngFor="let notification of notificationsBc" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<div class="notifications bottom-left">
+	<div *ngFor="let notification of notificationsBl" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<ng-template #notificationTpl let-notification="notification">
+
+    <div fxLayout="row" fxLayoutAlign="start start">
+        <div class="message" fxFlex>{{notification.message}}</div>
+        <button mat-icon-button (click)="close(notification)">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="app-form-textarea">
+    <label [for]="id" *ngIf="label && !hideLabel">
+        <span [class.required]="isRequired">{{ label }}</span>
+    </label>
+    <textarea
+        [id]="id"
+        [name]="id"
+        [placeholder]="placeholder"
+        [value]="value"
+        [disabled]="isDisabled"
+        (input)="onChange($event)"
+        (blur)="touched()"
+        cdkTextareaAutosize
+        [cdkAutosizeMinRows]="minRows"
+        [cdkAutosizeMaxRows]="maxRows"
+        [ngClass]="{
+            'hasError': formControl.invalid && formControl.dirty
+        }"
+    ></textarea>
+    <app-form-field-errors [control]="formControl" *ngIf="!hideErrors"></app-form-field-errors>
+</div>

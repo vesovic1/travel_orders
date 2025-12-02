@@ -1,0 +1,236 @@
+/* DATA TABLE SIMPLE */
+.app-table-simple-holder {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow-x: auto;
+    padding-top: 20px;
+}
+
+.app-table-simple {
+    min-width: 100%;
+    width: fit-content;
+    max-height: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--color-input-border);
+    overflow: hidden;
+
+    @include columns;
+
+    .col {
+        padding: 5px;
+        color: var(--color-input-label);
+        line-height: 24px;
+        font-size: $font-size;
+        span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        a {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        &.col-align-center {
+            text-align: center;
+        }
+        &.col-align-left {
+            text-align: left;
+        }
+        &.col-align-right {
+            text-align: right;
+        }
+    }
+
+    .col-action {
+        .col-action__holder {
+            padding: 5px 10px 5px 5px;
+            width: 100%;
+            min-width: max-content;
+            text-align: right;
+            display: none;
+            .btn-icon-bordered {
+                margin-left: 10px;
+                background-color: transparent;
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                span {
+                    font-size: 18px;
+                    line-height: 24px;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+
+    .app-table-simple__row {
+        height: 35px;
+        border-bottom: 1px solid var(--color-silver-100);
+        padding: 0px 4px;
+        &:hover {
+            .col-action {
+                &__holder {
+                    display: block;
+                }
+            }
+        }
+        &.empty {
+            border-bottom: none;
+            .empty-list-row {
+                line-height: 35px;
+                text-align: center;
+                font-size: $font-size;
+                color: rgba(var(--color-input-label--rgb), 0.9);
+            }
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    &__header {
+        .app-table-simple__row {
+            background-color: var(--color-input-disabled);
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+            border-bottom: 1px solid var(--color-input-border);
+
+            .col {
+                font-weight: 500;
+                color: rgba(var(--color-input-label--rgb), 0.5);
+                user-select: none;
+                font-size: $font-size - 1px;
+            }
+            .col-action {
+                &__holder {
+                    display: block;
+                }
+            }
+        }
+
+    }
+    &__body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        .app-table-simple__row {
+            transition: all 0.1s ease-in-out;
+            &:hover {
+                background-color: var(--color-silver-light);
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+            &.selected {
+                background-color: #fafabf;
+            }
+            &.used {
+                background-color: rgba(var(--color-success--rgb), .3);
+            }
+        }
+    }
+    &__pagination {
+        height: 36px;
+        min-height: 36px;
+        border-top: 1px solid var(--color-silver-300);
+        padding: 4px 10px 4px 5px;
+        &.hidden {
+            display: none;
+        }
+
+    }
+}
+
+.app-drag-drop-table-holder {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    height: 100%;
+
+    .app-table-simple-holder {
+        padding-top: 0px;
+    }
+
+    .app-table-simple {
+        background-color: var(--color-white);
+        border-top: 1px solid var(--color-silver-300);
+        border-bottom: 1px solid var(--color-silver-300);
+        user-select: none;
+        .app-table-simple__row {
+            cursor: grab;
+        }
+
+        .col-action {
+            .col-action__holder {
+                .btn-icon {
+                    margin-left: 5px;
+                    background-color: transparent;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 22px;
+                    span {
+                        font-size: 20px;
+                        line-height: 22px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: var(--color-white);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+    @include columns;
+
+    .col {
+        padding: 5px;
+        color: var(--color-input-label);
+        align-self: center;
+        font-size: $font-size;
+        span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        a {
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        &.col-align-center {
+            text-align: center;
+        }
+        &.col-align-left {
+            text-align: left;
+        }
+        &.col-align-right {
+            text-align: right;
+        }
+    }
+
+    .col-action {
+        .col-action__holder {
+            display: none !important;
+        }
+    }
+}

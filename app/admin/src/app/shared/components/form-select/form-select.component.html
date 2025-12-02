@@ -1,0 +1,55 @@
+<div class="app-form-select">
+    <label [for]="id">
+        <span *ngIf="label" [class.required]="isRequired">{{ label }}</span>
+    </label>
+    <ng-select
+        [clearSearchOnAdd]="true"
+        [labelForId]="id"
+        [appendTo]="appendTo"
+        [searchable]="searchable"
+        [formControl]="formControl"
+        [placeholder]="placeholder"
+        [clearable]="clearable"
+        [multiple]="multiple"
+        [closeOnSelect]="closeOnSelect"
+        [class.htmlTemplate]="customTemplate"
+        [ngClass]="{
+            'hasError': formControl.invalid && formControl.dirty
+        }"
+        (search)="customSearchFn($event)"
+        (blur)="touched()"
+        [loading]="loading"
+        notFoundText="Nema podataka za prikaz"
+        loadingText="Pretraga je u toku..."
+    >
+
+        <ng-container *ngIf="!customTemplate">
+            <ng-option
+                *ngFor="let option of options"
+                [value]="option.value"
+            >
+                {{ option.text }}
+            </ng-option>
+        </ng-container>
+
+        <ng-container *ngIf="customTemplate">
+            <ng-option
+                *ngFor="let option of options"
+                [value]="option.value"
+                [class.htmlTemplateOption]="customTemplate"
+            >
+                <div
+                    class="app-select-option-template"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    [innerHtml]="option.html | safeHtml"
+                >
+                </div>
+
+            </ng-option>
+        </ng-container>
+
+    </ng-select>
+
+    <app-form-field-errors [control]="formControl" *ngIf="!hideErrors"></app-form-field-errors>
+</div>

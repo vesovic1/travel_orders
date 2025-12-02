@@ -1,0 +1,32 @@
+<div class="app-form-input color-picker-input" [ngClass]="size">
+    <label *ngIf="label && !hideLabel" [for]="id">
+        <span [class.required]="isRequired">{{ label }}</span>
+    </label>
+    <div class="color-picker-input__wrapper">
+        <div class="color-picker-input__preview" [class.no-value]="formControl.invalid && formControl.dirty" [style.background-color]="formControl.value" (click)="picker.click()"></div>
+        <div class="color-picker-input__value">
+            <input 
+                class="hex-input" 
+                type="text" 
+                [id]="id" 
+                [placeholder]="placeholder" 
+                [formControl]="formControl"
+                [value]="value"
+                (blur)="touched()" 
+                [name]="id"
+                [ngClass]="{
+                    'hasError': formControl.invalid && formControl.dirty
+                }"
+            />
+        </div>
+        <input
+            #picker
+            class="picker-input"
+            type="color"
+            [value]="value"
+            [formControl]="formControl"
+            (input)="onChange($event)"
+        />
+    </div>
+    <app-form-field-errors [control]="formControl"></app-form-field-errors>
+</div>

@@ -1,0 +1,12 @@
+<div class="form-field-errors">
+    <ng-container *ngIf="control.dirty">
+        <span class="form-field-error" *ngIf="control.hasError('required')">This field is requied.</span>
+        <span class="form-field-error" *ngIf="control.hasError('noEmptyString')">Please enter a valid value.</span>
+        <span class="form-field-error" *ngIf="control.hasError('email')">Please enter a valid email address.</span>
+        <span class="form-field-error" *ngIf="control.hasError('minlength') && !control.hasError('required')">The minimum number of characters is {{ control.errors?.minlength.requiredLength }}.</span>
+        <span class="form-field-error" *ngIf="control.hasError('maxlength') && !control.hasError('required')">The maximum number of characters is {{ control.errors?.maxlength.requiredLength }}.</span>
+        <span class="form-field-error" *ngIf="control.hasError('min') && !control.hasError('required')">The minimum value cannot be lower than {{ control.errors?.min.min }}.</span>
+        <span class="form-field-error" *ngIf="control.hasError('max') && !control.hasError('required')">The maximum value cannot be greater than {{ control.errors?.max.max }}.</span>
+        <span class="form-field-error" *ngIf="control.hasError('format')">The value entered is not in the correct format.</span>
+    </ng-container>
+</div>

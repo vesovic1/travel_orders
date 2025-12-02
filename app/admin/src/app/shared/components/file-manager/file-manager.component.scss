@@ -1,0 +1,100 @@
+.app-modal__content__holder {
+    padding: 0px 20px !important;
+}
+
+.app-documents-empty {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: var(--color-dark-100);
+}
+
+app-file-manager-uploader {
+    display: flex;
+    margin-left: 20px;
+}
+
+.app-documents-list {
+    &__col {
+        padding: 5px;
+
+        &.col-name {
+            width: 350px;
+            min-width: 350px;
+            max-width: 350px;
+        }
+        &.col-date {
+            width: 140px;
+            min-width: 140px;
+            max-width: 140px;
+        }
+        &.col-size {
+            width: 140px;
+            min-width: 140px;
+            max-width: 140px;
+        }
+        &.col-action {
+            width: 200px;
+            min-width: 200px;
+            max-width: 200px;
+        }
+    }
+    &__header {
+        border-bottom: 1px solid var(--color-silver-400);
+        .app-documents-list__row {
+            .app-documents-list__col {
+                color: var(--color-dark-100);
+                font-weight: 500;
+                height: 35px;
+                line-height: 25px;
+            }
+        }
+    }
+    &__content {
+        .app-documents-list__row {
+            background-color: var(--color-white);
+            transition: background-color .2s ease-in-out;
+            cursor: pointer;
+            .app-documents-list__col {
+                &.col-name {
+                  .filename {
+                    app-doc-icon {
+                        display: flex;
+                        margin-right: 5px;
+                    }
+                    span {
+                        font-weight: 500;
+                    }
+                  }
+                }
+                &.col-action {
+                    .col-action__holder {
+                        display: none;
+                        .btn {
+                            width: 24px;
+                            height: 24px;
+                            background-color: transparent;
+                            span {
+                                font-size: 20px;
+                                line-height: 22px;
+                            }
+                        }
+                    }
+                }
+            }
+            &:hover {
+                background-color: var(--color-silver-light);
+                .app-documents-list__col {
+                    &.col-action {
+                        .col-action__holder {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+        .app-documents-list__row + .app-documents-list__row {
+            border-top: 1px solid var(--color-silver-300);
+        }
+    }
+}

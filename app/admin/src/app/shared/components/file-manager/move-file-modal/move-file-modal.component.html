@@ -1,0 +1,39 @@
+<div class="app-modal document-edit-modal" fxLayout="column">
+    <div class="app-modal__header" fxLayout="row" fxLayoutAlign="start center">
+        <h2 fxFlex>Premesti u folder</h2>
+        <button class="btn btn-icon">
+            <span class="material-symbols-outlined" (click)="close(false)">close</span>
+        </button>
+    </div>
+    <div class="app-modal__content">
+        <div class="app-modal-spinner" *ngIf="saving">
+            <app-spinner [diameter]="30"></app-spinner>
+        </div>
+        <div class="app-form-group" fxLayout="column" [class.app-content-loading]="saving">
+            <div class="app-form-element">
+                <app-form-select
+                    [formControl]="getFormControl(folderFormControl)"
+                    [options]="folderOptions"
+                    label="Folder"
+                    placeholder="Odaberite folder"
+                    [searchable]="true"
+                    appendTo=".document-edit-modal"
+                ></app-form-select>
+            </div>
+        </div>
+    </div>
+    <div class="app-modal__footer">
+        <div class="buttons-holder" fxLayout="row" fxLayoutAlign="end center">
+            <button class="btn btn-bordered" (click)="close(false)">
+                Zatvori
+            </button>
+            <button
+                class="btn btn-primary"
+                (click)="save()"
+                [disabled]="saving || form.invalid"
+            >
+                Premesti
+            </button>
+        </div>
+    </div>
+</div>

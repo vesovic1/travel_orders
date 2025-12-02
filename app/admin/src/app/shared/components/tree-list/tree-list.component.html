@@ -1,0 +1,36 @@
+
+ <ng-template #nodeTemplateRef let-node="node">
+	<div class="node">
+        <div class="node__label" [class.disabled]="node.disabled" fxLayout="row" fxLayoutAlign="start center" *ngIf="node.id" (click)="toggleNode(node)">
+          <div class="node__toggle">
+                  <span class="material-symbols-outlined" *ngIf="node.childs.length && !node.open && ! node.disabled">chevron_right</span>
+                  <span class="material-symbols-outlined" *ngIf="node.childs.length && node.open && ! node.disabled">expand_more</span>
+              </div>
+          <div class="node__name" fxFlex><span>{{ node.name }}</span> <span class="node__name__description" *ngIf="node.description">{{ node.description }}</span></div>
+          <div class="node__action" *ngIf="templateDictionary" appClickStopPropagation>
+                  <ng-template
+                      [ngTemplateOutlet]="templateDictionary"
+                      [ngTemplateOutletContext]="{ item: node }"
+                  >
+                  </ng-template>
+              </div>
+        </div>
+
+		<div *ngIf="node.childs.length && node.open" class="node__children">
+
+			<ng-template ngFor let-child [ngForOf]="node.childs">
+				<ng-template
+					[ngTemplateOutlet]="nodeTemplateRef"
+					[ngTemplateOutletContext]="{ node: child }">
+				</ng-template>
+			</ng-template>
+
+		</div>
+	</div>
+</ng-template>
+
+<ng-template
+	[ngTemplateOutlet]="nodeTemplateRef"
+	[ngTemplateOutletContext]="{ node: tree.root }">
+</ng-template>
+

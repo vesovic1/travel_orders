@@ -1,0 +1,18 @@
+@import "variables.scss";
+
+.confirmation-modal {
+    width: 350px;
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 
+        rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, 
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    .content {
+        margin-bottom: 20px;
+        p {
+            font-size: $font-size;
+            line-height: 16px;
+        }
+    }
+}

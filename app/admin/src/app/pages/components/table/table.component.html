@@ -1,0 +1,132 @@
+<app-menu-top menu="components"></app-menu-top>
+<app-page-options>
+    <div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+        <div
+            class="option-item divider"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <app-search-filter
+                fxFlex="250px"
+                (valueChanged)="searchChanged($event)"
+                placeholder="Type here to search..."
+            ></app-search-filter>
+        </div>
+    </div>
+    <div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+        <div
+            class="option-item divider"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <button class="btn btn-icon">
+                <span class="material-symbols-outlined">refresh</span>
+            </button>
+        </div>
+    </div>
+    <div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+        <div class="option-item" fxLayout="row" fxLayoutAlign="start center">
+            <div
+                class="app-filter-button"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                [cdkMenuTriggerFor]="filterMenu"
+            >
+                <span class="app-filter-button__icon material-symbols-outlined"
+                    >view_list</span
+                >
+                <span class="app-filter-button__value">Filter by status</span>
+            </div>
+            <ng-template #filterMenu>
+                <div class="app-drop-menu" cdkMenu>
+                    <div class="app-drop-menu__header">
+                        <div
+                            class="title"
+                            fxLayout="row"
+                            fxlayoutAlign="start center"
+                        >
+                            <span class="name">Filter by</span>
+                            <span class="material-symbols-outlined">help</span>
+                        </div>
+                    </div>
+                    <div class="app-drop-menu__content">
+                        <div
+                            class="app-drop-menu-item"
+                            cdkMenuItem
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                        >
+                            <span class="material-symbols-outlined"
+                                >refresh</span
+                            >
+                            <span>Refresh</span>
+                        </div>
+                        <div
+                            class="app-drop-menu-item"
+                            cdkMenuItem
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            <span>Settings</span>
+                        </div>
+                        <div
+                            class="app-drop-menu-item"
+                            cdkMenuItem
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                        >
+                            <span class="material-symbols-outlined">help</span>
+                            <span>Help</span>
+                        </div>
+                        <div
+                            class="app-drop-menu-item"
+                            cdkMenuItem
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                        >
+                            <span class="material-symbols-outlined"
+                                >logout</span
+                            >
+                            <span>Sign out</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</app-page-options>
+
+<app-page layout="table-layout">
+    <div class="app-table-holder">
+        <app-data-table
+            [settings]="tableSettings"
+            [items]="results"
+            (metaChanged)="metaChanged($event)"
+        >
+            <ng-template col="email" let-value>
+                <a>{{ value }}</a>
+            </ng-template>
+
+            <ng-template col="action" let-item="item">
+                <div
+                    class="col-action__holder"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <button class="btn btn-icon">
+                        <span class="material-symbols-outlined">refresh</span>
+                    </button>
+                    <button class="btn btn-icon">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn btn-icon">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            </ng-template>
+        </app-data-table>
+    </div>
+</app-page>

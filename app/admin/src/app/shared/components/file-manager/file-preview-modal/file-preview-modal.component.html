@@ -1,0 +1,22 @@
+<div class="app-modal documents-preview-modal {{ type }}-viewer" fxLayout="column">
+    <div class="app-modal__header" fxLayout="row" fxLayoutAlign="start center">
+        <button class="btn btn-icon" (click)="dialogRef.close()">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    <div class="app-modal__content">
+        <div class="app-modal__loader" *ngIf="loading">
+            <app-spinner [diameter]="50"></app-spinner>
+        </div>
+        <img [src]="fileUrl" *ngIf="!loading && fileUrl && type === 'image'">
+        <pdf-viewer
+            *ngIf="!loading && fileUrl && type === 'pdf'"
+            [src]="fileUrl"
+            style="width: auto; height: 100%"
+        ></pdf-viewer>
+        <div class="undefined-preview" *ngIf="!loading && type === 'undefined'">
+            <span class="material-symbols-outlined">warning</span>
+            <p>Omogućen je pregled PDF fajlova i slika. Molimo Vas da preuzmete fajl kako bi ga pregledali.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<div
+    #mainMenu
+    class="app-menu-main"
+    [ngClass]="menuClass"
+    (mouseenter)="menuMouseEnter()"
+    (mouseleave)="menuMouseLeave()"
+>
+    <div class="app-menu-main-header-holder">
+        <div fylayout="row" fxLayoutAlign="start center">
+            <div class="app-header" fxFlex>
+                <a
+                    [routerLink]="['home']"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <div class="app-logo-holder">
+                        <img src="assets/logo.png" alt="logo" />
+                    </div>
+                    <div class="app-name">TripGo</div>
+                </a>
+            </div>
+            <div
+                class="menu-switch-button"
+                (click)="toggleMenu()"
+                #toggleButton
+            >
+                <span
+                    class="material-symbols-outlined"
+                    [class.rotate]="isClosed || isSticky"
+                    >keyboard_double_arrow_left</span
+                >
+            </div>
+        </div>
+    </div>
+    <div class="app-menu-main-content">
+        <nav class="menu-holder" fxLayout="column">
+            <ng-container *ngIf="menuItems.length && !loadingMenu">
+                <ng-container *ngFor="let item of menuItems">
+                    <ng-container *ngIf="!item.hidden">
+                        <ng-container *ngIf="item.code == 'divider'">
+                            <span class="app-menu-main-divider"></span>
+                        </ng-container>
+                        <ng-container *ngIf="item.code !== 'divider'">
+                            <!-- [routerLink]="item.children.length ? item.children[0].link : item.link"  -->
+
+                            <a
+                                class="menu-item"
+                                [routerLink]="item.children.length ? item.children[0].link : item.link"
+                                [class.active]="item.isActive"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                            >
+                                <span class="menu-item-icon material-symbols-outlined">{{
+                                    item.icon
+                                }}</span>
+                                <span class="menu-item-title">{{ item.label }}</span>
+                            </a>
+
+                            <span class="app-menu-main-divider" *ngIf="item.bottomDivider"></span>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+
+            <span fxFlex></span>
+            <span class="app-menu-main-divider" *ngIf="user"></span>
+            <a
+                class="profile-menu-item"
+                [cdkMenuTriggerFor]="userProfileMenu"
+                *ngIf="user"
+            >
+                <div
+                    class="profile-button-holder"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <div class="profile-image-holder">
+                        <span class="material-symbols-outlined">person</span>
+                    </div>
+                    <div class="username">{{ user.first_name }} {{ user.last_name }}</div>
+                </div>
+            </a>
+        </nav>
+    </div>
+</div>
+<ng-template #userProfileMenu>
+    <div class="app-drop-menu" cdkMenu>
+        <div class="app-drop-menu__content">
+            <div
+                class="app-drop-menu-item"
+                cdkMenuItem
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                (click)="profile()"
+            >
+                <span class="material-symbols-outlined">person</span>
+                <span>Profil</span>
+            </div>
+            <div class="app-drop-menu-divider"></div>
+            <div
+                class="app-drop-menu-item"
+                cdkMenuItem
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                (click)="logout()"
+            >
+                <span class="material-symbols-outlined">logout</span>
+                <span>Odjavi se</span>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<div class="app-menu-main-helper" *ngIf="isSticky"></div>

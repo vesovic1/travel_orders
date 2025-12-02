@@ -1,0 +1,8 @@
+parameters:
+	level: 5
+	bootstrapFiles:
+		- ../api/public/index.php
+	paths:
+		- ../api/src
+		- ../core/src
+	excludePaths:

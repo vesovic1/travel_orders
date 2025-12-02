@@ -1,0 +1,23 @@
+<div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+    <div class="option-item padding-left" fxLayout="row" fxLayoutAlign="start center">
+        <div class="app-page-filter" fxLayout="row" fxLayoutAlign="start center" (click)="open()" [class.hasValue]="formControl.value">
+            <dp-date-picker
+                #appDatePicker
+                *ngIf="config"
+                [id]="id"
+                [formControl]="formControl"
+                [mode]="mode"
+                [config]="config"
+                theme="app-page-date-filter"
+                (input)="onChange($event)"
+                (blur)="touched()"
+                [ngClass]="{
+                    'hasError': formControl.invalid && formControl.dirty
+                }"
+            ></dp-date-picker>
+            <div class="app-page-filter__icon material-symbols-outlined">event</div>
+            <div class="app-page-filter__value" [class.hasValue]="formControl.value">{{ (formControl.value | date: format ) || label }}</div>
+            <div *ngIf="formControl.value" class="app-page-filter__clear material-symbols-outlined" (click)="clear()" appClickStopPropagation>close</div>
+        </div>
+    </div>
+</div>

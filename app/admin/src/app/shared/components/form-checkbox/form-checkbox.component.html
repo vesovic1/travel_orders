@@ -1,0 +1,19 @@
+<label class="app-form-checkbox" [class.disabled]="isDisabled" [class.compact]="compact">
+    <input
+        #inputCheckbox
+        class="checkbox-input"
+        type="checkbox"
+        [ngModel]="checked"
+        [disabled]="isDisabled"
+        (ngModelChange)="onModelChange($event)"
+    />
+    <div class="checkbox-border">
+        <div class="checkbox-filling" *ngIf="checked">
+            <span class="material-symbols-outlined">check</span>
+        </div>
+        <div class="checkbox-partial" *ngIf="!checked && partialSelection">
+            <span>-</span>
+        </div>
+    </div>
+    <ng-content></ng-content>
+</label>

@@ -1,0 +1,7 @@
+<div class="search-field" fxLayout="row" fxLayoutAlign="start center">
+    <span class="material-symbols-outlined search-field__icon">search</span>
+    <div class="search-field__holder" fxFlex>
+        <input  [placeholder]="placeholder" class="search-field__holder__input" #searchInput>
+        <span class="material-symbols-outlined search-field__holder__close-icon" (click)="resetSearch()" *ngIf="isSearchMode">close</span>
+    </div>
+</div>

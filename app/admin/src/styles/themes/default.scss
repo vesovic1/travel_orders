@@ -1,0 +1,58 @@
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-dark-100: #5c5c5c;
+$color-dark-200: #53575e;
+$color-dark-300: #384047;
+$color-dark-400: #333333;
+$color-dark-500: #2e2e2e;
+$color-dark-600: #282b3b;
+$color-dark-700: #282b3b;
+$color-dark-800: #20262b;
+$color-dark-900: #12161a;
+$color-dark-1000: #121212;
+
+$color-silver-light: #f7f8f9;
+$color-silver-100: #EEEEEE;
+$color-silver-200: #F2F2F2;
+$color-silver-300: #E9EBF0;
+$color-silver-400: #D5D6D7;
+$color-silver-500: #b0b0b0;
+$color-silver-600: #a8acb3;
+$color-silver-700: #8f8f8f;
+$color-silver-800: #7A7D82;
+
+$color-blue-400: #1178EB;
+$color-blue-500: #0e64c7;
+$color-blue-800: #135096;
+
+$color-error: #ff4d4d;
+$color-error-500: #c60e00;
+$color-warning: #f2b900;
+$color-gold: #FFD700;
+$color-warning-500: #a37f08;
+$color-warning-800: #554100;
+$color-success: #00b36e;
+$color-success-200: #119965;
+
+$color-disabled: #cdcdcd;
+
+$color-checkbox-border: #d8d8d8;
+$color-input-label: #2a2e34;
+$color-input-border: #e4e4e4;
+$color-input-invalid: #d91818;
+$color-input-disabled: #f0f0f0;
+
+$color-button-default: #a8a8a8;
+$color-button-hover: $color-input-disabled;
+$color-button-hover-text: #858585;
+$color-button-border: #dddddd;
+
+$color-background: #FAFBFC;
+
+$color-auth-title: #030303;
+$color-auth-subtitle: #646669;
+$color-auth-text: #666666;
+$color-auth-text-light: #a1a1a1;
+
+@import 'varmap.scss';

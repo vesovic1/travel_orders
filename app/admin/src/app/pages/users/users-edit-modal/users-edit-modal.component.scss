@@ -1,0 +1,68 @@
+.user-type-selection {
+    margin-bottom: 20px;
+    &__item {
+        border-radius: 5px;
+        padding: 3px 10px 10px 10px;
+        border: 1px solid var(--color-silver-300);
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        user-select: none;
+        overflow: hidden;
+        transition: all .2s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+        &__title {
+            z-index: 1;
+            position: relative;
+            span {
+                font-size: 13px;
+                font-weight: 500;
+                color: var(--color-dark-300);
+                text-transform: uppercase;
+            }
+        }
+        &__description {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-silver-800);
+            z-index: 1;
+            position: relative;
+        }
+        &__icon {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            font-size: 61px;
+            color: var(--color-silver-100);
+        }
+        &:hover {
+            background-color: var(--color-silver-light);
+        }
+        &.selected {
+            border-color: var(--color-blue-400);
+        }
+    }
+    .user-type-selection__item + .user-type-selection__item {
+        margin-left: 10px;
+    }
+}
+
+.app-form-divider {
+    background-color: var(--color-silver-300);
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 10px;
+    font-size: 13px;
+    color: var(--color-dark-300);
+    font-weight: 500;
+    border-bottom: none;
+    border-radius: 3px;
+}
+
+.b2b-email-notifications-title {
+    display: block;
+    line-height: 20px;
+    font-weight: 500;
+    margin-top: 3px;
+}

@@ -1,0 +1,12 @@
+<div class="app-main">
+    <div class="app-main-holder" fxLayout="row" fxLayoutAlign="start start">
+        <app-menu-main fxFlex="none"></app-menu-main>
+        <div class="app-main-content" fxLayout="column" fxFlex>
+            <div class="app-page-holder">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-notifications-holder></app-notifications-holder>

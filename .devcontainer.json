@@ -1,0 +1,5 @@
+{
+  "dockerComposeFile": ["docker-compose.yml"],
+  "remoteUser": "root",
+  "workspaceFolder": "/var/www/travel_orders"
+}

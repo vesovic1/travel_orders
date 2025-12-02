@@ -1,0 +1,44 @@
+@import "variables.scss";
+
+.app-form-date-picker {
+    label, input {
+        display: block;
+    }
+    label {
+        line-height: 24px;
+        font-weight: 500;
+        margin-bottom: 3px;
+        width: fit-content;
+        span {
+            &.required {
+                &::after {
+                    content: '*';
+                    color: var(--color-input-invalid);
+                }
+            }
+        }
+    }
+
+    .app-picker-wrapper {
+        position: relative;
+        .material-symbols-outlined {
+            font-size: 22px;
+            position: absolute;
+            right: 8px;
+            top: 7px;
+            cursor: pointer;
+            color: rgba(var(--color-input-label--rgb), 0.65);
+            transition: color 0.25s ease-in-out;
+            
+            
+            &:hover {
+                color: rgba(var(--color-input-label--rgb), 1);
+            }
+            &.disabled {
+                &:hover {
+                    color: rgba(var(--color-input-label--rgb), 0.65);
+                }
+            }
+        }
+    }
+}

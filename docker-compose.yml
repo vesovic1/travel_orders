@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+    php:
+        container_name: travel_orders
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./app:/var/www/travel_orders
+        ports:
+            - 80:80
+            - 443:443
+            - 4200:4200

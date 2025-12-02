@@ -1,0 +1,49 @@
+<div fxlayout="row" fxlayoutalign="start center" class="app-filter-button" (click)="documentsUploader.click()">
+    <span class="app-filter-button__icon material-symbols-outlined">description</span>
+    <span class="app-filter-button__value">Novi fajl</span>
+</div>
+
+<input type="file" hidden #documentsUploader (change)="handleImageFileInput($event)" multiple>
+
+<div class="app-file-uploader" *ngIf="uploading">
+    <div class="app-file-uploader__holder" fxLayout="column">
+        <div class="app-file-uploader__header">
+            <span>Uvoz dokumenata je u toku...</span>
+        </div>
+        <div class="app-file-uploader__progress">
+            <div class="progress-bar">
+                <div class="progress" [style.width.%]="uploadingProgress"></div>
+                <div class="label">{{ totalFinished }} / {{ totalFiles }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-file-uploader-response" *ngIf="responseModal">
+    <div class="app-file-uploader-response__holder" fxLayout="column">
+        <div class="app-file-uploader-response__header" fxLayout="row" fxLayoutAlign="start center">
+            <div class="title" fxFlex>Uvoz dokumenata</div>
+            <span class="material-symbols-outlined" (click)="closeResponseModal()" fxFlex="none">close</span>
+        </div>
+
+        <div class="app-file-uploader-response__row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="label" fxFlex>Uspešno uvezeno: <span class="success">{{ success.length }}</span></div>
+        </div>
+
+        <div class="app-file-uploader-response__row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="label" fxFlex>Neuspešno uvezeno: <span class="error">{{ errors.length }}</span></div>
+            <div class="action" fxFlex="none" fxLayout="row" fxLayoutAlign="start center" (click)="toggleResponseErrors()" *ngIf="errors.length">
+                <span class="material-symbols-outlined" *ngIf="!responseModalShowMore">chevron_right</span>
+                <span class="material-symbols-outlined" *ngIf="responseModalShowMore">expand_more</span>
+            </div>
+        </div>
+
+        <div class="app-file-uploader-response__errors" fxLayout="column" *ngIf="responseModalShowMore && errors.length">
+            <div class="app-file-uploader-response__errors__item" fxLayout="row" fxLayoutAlign="start center" *ngFor="let error of errors">
+                <div class="file_name" fxFlex>{{ error.name }}</div>
+                <span class="material-symbols-outlined" fxFlex="none" [appTooltip]="error.message" direction="left">warning</span>
+            </div>
+        </div>
+
+    </div>
+</div>

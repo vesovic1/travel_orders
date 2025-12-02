@@ -1,0 +1,19 @@
+<div class="menu-top-holder" [class.app-left-menu]="position === 'left'">
+    <div class="app-menu-top">
+        <div class="app-menu-top-holder" fxLayout="row" fxLayoutAlign="start center" *ngIf="mainMenuSettings">
+            <div class="current-page" fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+                <span class="current-page-icon material-symbols-outlined"><span class="material-symbols-outlined">{{ mainMenuSettings.icon }}</span></span>
+                <span class="current-page-title">{{ mainMenuSettings.label }}</span>
+            </div>
+            <div class="menu-holder" fxLayout="row" fxLayoutAlign="start center" fxFlex="none" *ngIf="mainMenuSettings.children.length">
+                <ng-container *ngFor="let item of mainMenuSettings.children">
+                    <a class="menu-item" fxLayoutAlign="center center" routerLinkActive="active" [routerLink]="item.link">
+                        <span class="menu-item-title">{{ item.label }}</span>
+                    </a>
+                </ng-container>
+            </div>
+            <span fxFlex></span>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

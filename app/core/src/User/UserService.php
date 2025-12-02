@@ -1,0 +1,67 @@
+<?php
+
+namespace DomteraCore\User;
+
+use DomteraCore\Factory\QueryFactory;
+
+class UserService
+{
+
+    protected $cols;
+
+    public function __construct(
+        protected QueryFactory $query,
+    )
+    {
+        $this->cols = ['id', 'first_name', 'last_name', 'active', 'username', 'email'];
+    }
+
+    public function get($params)
+    {
+
+        if (empty($params['orderBy'])) {
+            $params['orderBy'] = ['first_name' => 'ASC'];
+        }
+
+        $users = $this->query->select('users')
+            ->select($this->cols)
+            ->order($params['orderBy'])
+            ->page($params['page'], $params['pageSize'])
+            ->where([
+                'LOWER(CONCAT_WS(\' \', users.first_name, users.last_name, users.username, users.email)) LIKE ' => '%'.$params['search'].'%',
+                '_deleted' => 0
+            ])
+            ->execute()
+            ->fetchAll('assoc');
+        return $users;
+    }
+
+    public function getCount($params)
+    {
+        $userCount = $this->query->select('users')->select('COUNT(*) as count')
+        ->where([
+            'LOWER(CONCAT_WS(\' \', users.first_name, users.last_name, users.username, users.email)) LIKE ' => '%'.$params['search'].'%',
+            '_deleted' => 0
+        ])
+        ->execute()->fetch();
+        return $userCount[0];
+    }
+
+    public function getById($id)
+    {
+        return $this->query->select('users')
+            ->select($this->cols)
+            ->where(['id' => $id])
+            ->execute()
+            ->fetch('assoc');
+    }
+
+    public function getProfile($id)
+    {
+        return $this->query->select('users')
+            ->select($this->cols)
+            ->where(['id' => $id])
+            ->execute()
+            ->fetch('assoc');
+    }
+}

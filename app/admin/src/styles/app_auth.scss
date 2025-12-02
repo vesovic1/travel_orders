@@ -1,0 +1,224 @@
+code-input {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: $font-size + 17px !important;
+    --item-spacing: 10px !important;
+    --item-height: 60px !important;
+}
+
+app-signup-email,
+app-signin,
+app-password-reset-request,
+app-password-reset-confirm,
+app-password-reset-setup,
+app-signup-confirm,
+app-signup-profile {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: var(--color-background);
+    .signup-block {
+        width: 90%;
+        max-width: 400px;
+        // height: 80%;
+        // max-height: 622px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--color-white);
+        box-shadow: 0px 5px 10px rgba(var(--color-black--rgb), 0.2);
+        &.password-reset {
+            width: 40%;
+            max-width: 460px;
+        }
+        form {
+            width: 100%;
+        }
+        .signup-form {
+            padding: 30px;
+            &__logo-holder {
+                width: 40px;
+                height: 40px;
+                min-height: 40px;
+                border-radius: 5px;
+                background-color: #9966ff;
+                margin-bottom: 15px;
+            }
+            &__title {
+                h1 {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin: 0px;
+                    color: var(--color-auth-title);
+                    margin-bottom: 20px;
+                }
+            }
+            &__subtitle {
+                color: var(--color-auth-subtitle);
+                font-size: $font-size + 3px;
+                font-weight: 500;
+                margin-bottom: 36px;
+                margin-top: 7px;
+                span {
+                    display: inline;
+                    vertical-align: middle;
+                    &:first-child {
+                        display: inline-block;
+                        margin-right: 10px;
+                        font-size: 18px;
+                        width: 22px;
+                        text-align: center;
+                        line-height: 22px;
+                        font-weight: 600;
+                        border-radius: 50%;
+                        color: var(--color-white);
+                        background-color: var(--color-success);
+                    }
+                }
+            }
+
+            &__form {
+                .code-input-holder {
+                    margin-left: -10px;
+                    margin-right: -10px;
+                }
+                .password-strength-holder {
+                    margin-bottom: 35px;
+                }
+            }
+            &__form-divider {
+                margin: 32px 0px;
+                height: 20px;
+                text-align: center;
+                width: 100%;
+                position: relative;
+                span {
+                    color: var(--color-auth-text);
+                    line-height: 20px;
+                    background-color: var(--color-white);
+                    padding: 0px 15px;
+                }
+                &::after {
+                    content: '';
+                    display: block;
+                    border-bottom: 1px solid var(--color-input-border);
+                    position: absolute;
+                    left: 0px;
+                    right: 0px;
+                    bottom: 9px;
+                    z-index: -1;
+                }
+            }
+            &__terms {
+                margin-top: 20px;
+                p {
+                    color: var(--color-auth-text-light);
+                }
+            }
+            &__footer {
+                margin-top: 30px;
+                p {
+                    color: var(--color-auth-text);
+                    a {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+                p + p {
+                    margin-top: 7px;
+                }
+            }
+        }
+        .signup-image {
+            background-color: #9966ff; //for test
+        }
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    app-signup-email,
+    app-signin,
+    app-password-reset-request,
+    app-password-reset-confirm,
+    app-password-reset-setup,
+    app-signup-confirm,
+    app-signup-profile {
+        .signup-block {
+            width: 90%;
+            max-width: auto;
+            &.password-reset {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    app-signup-email,
+    app-signin,
+    app-password-reset-request,
+    app-password-reset-confirm,
+    app-password-reset-setup,
+    app-signup-confirm,
+    app-signup-profile {
+        .signup-block {
+            &.password-reset {
+                width: 60%;
+            }
+            .signup-form {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            .signup-image {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    app-signup-email,
+    app-signin,
+    app-password-reset-request,
+    app-password-reset-confirm,
+    app-password-reset-setup,
+    app-signup-confirm,
+    app-signup-profile {
+        .signup-block {
+            width: auto;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            box-shadow: none;
+            transform: none;
+            height: auto;
+            max-height: inherit;
+            &.password-reset {
+                width: 100%;
+                max-width: initial;
+            }
+            .signup-form {
+                flex: 1 1 100%;
+                max-width: 100%;
+                padding: 30px;
+
+                &__logo-holder {
+                    margin: 0px auto 15px auto;
+                }
+                &__title {
+                    text-align: center;
+                }
+                &__subtitle {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

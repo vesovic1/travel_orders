@@ -1,0 +1,18 @@
+{
+  "require": {
+    "slim/slim": "4.*",
+    "php-di/php-di": "^6.4",
+    "nyholm/psr7": "^1.5",
+    "nyholm/psr7-server": "^1.0",
+    "lcobucci/jwt": "^4.1",
+    "symfony/uid": "^6.1",
+    "cakephp/chronos": "^2.3",
+    "monolog/monolog": "^3.1",
+    "symfony/error-handler": "^6.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "DomteraApi\\": "src/"
+    }
+  }
+}

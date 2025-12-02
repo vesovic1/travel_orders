@@ -1,0 +1,76 @@
+<app-menu-top menu="users">
+    <button class="btn btn-primary btn-md btn-has-icon" [disabled]="loading" (click)="edit({})" >
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="material-symbols-outlined">person</span>
+            <span>Novi korisnik</span>
+        </div>
+    </button>
+</app-menu-top>
+
+<app-page-options>
+    <div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+        <div
+            class="option-item divider"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <app-search-filter
+                fxFlex="250px"
+                (valueChanged)="searchChanged($event)"
+                placeholder="Pretraga"
+            ></app-search-filter>
+        </div>
+    </div>
+    <div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+        <div
+            class="option-item divider"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <button class="btn btn-icon" (click)="refresh()">
+                <span class="material-symbols-outlined">refresh</span>
+            </button>
+        </div>
+    </div>
+</app-page-options>
+
+<app-page layout="table-layout">
+    <div class="app-page-loader" *ngIf="loading">
+        <app-spinner [diameter]="50"></app-spinner>
+    </div>
+    <div class="app-table-holder">
+        <app-data-table
+            [settings]="tableSettings"
+            [items]="users"
+            (metaChanged)="metaChanged($event)"
+            [pageSize]="50"
+            [rowClick]="editUser"
+        >
+
+            <ng-template col="username" let-value>
+                <div class="col-user-username">{{ value || '-' }}</div>
+            </ng-template>
+
+            <ng-template col="active" let-value>
+                <div *ngIf="value" class="app-status-flag status-green status-filled">Aktivan</div>
+                <div *ngIf="!value" class="app-status-flag status-red status-filled">Neaktivan</div>
+            </ng-template>
+
+            <ng-template col="action" let-item="item">
+                <div
+                    class="col-action__holder"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    appClickStopPropagation
+                >
+                    <button class="btn btn-icon" (click)="edit(item)" [appTooltip]="'Izmeni'">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn btn-icon" (click)="remove(item)" [appTooltip]="'Obriši'">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            </ng-template>
+        </app-data-table>
+    </div>
+</app-page>

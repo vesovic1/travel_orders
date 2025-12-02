@@ -1,0 +1,50 @@
+<div class="app-modal user-profile-modal" fxLayout="column">
+    <div class="app-modal__header" fxLayout="row" fxLayoutAlign="start center">
+        <h3 fxFlex>Profil</h3>
+        <button class="btn btn-icon">
+            <span class="material-symbols-outlined" (click)="dialogRef.close(false)">close</span>
+        </button>
+    </div>
+    <div class="app-modal__content">
+        <div class="app-modal-spinner" *ngIf="loading || saving">
+            <app-spinner [diameter]="30"></app-spinner>
+        </div>
+        <div class="profile-basic-data" *ngIf="profile">
+            <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+            <p>{{ profile.email }}</p>
+        </div>
+        <div class="app-form-group" fxLayout="column" [class.app-content-loading]="loading || saving">
+            <div class="app-form-divider"></div>
+            <div class="app-form-element">
+                <app-form-input
+                    [formControl]="getFormControl(oldPasswordFormControl)"
+                    label="Stara lozinka"
+                    type="password"
+                    placeholder="Unesite staru lozinku"
+                ></app-form-input>
+            </div>
+            <div class="app-form-element">
+                <app-form-input
+                    [formControl]="getFormControl(newPasswordFormControl)"
+                    label="Nova lozinka"
+                    type="password"
+                    placeholder="Unesite novu lozinku"
+                ></app-form-input>
+            </div>
+            <div class="app-form-element">
+                <app-form-input
+                    [formControl]="getFormControl(newPasswordConfirmFormControl)"
+                    label="Potvrda nove lozinke"
+                    type="password"
+                    placeholder="Potvrdite novu lozinku"
+                ></app-form-input>
+            </div>
+
+            <div class="buttons-container" fxLayout="row" fxLayoutAlign="center center">
+                <button class="btn btn-primary" (click)="save()" [disabled]="saving || loading || form.invalid">
+                    Izmenite lozinku
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
