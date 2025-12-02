@@ -1,7 +1,7 @@
 <?php
 
-namespace DomteraCore\User;
-use DomteraCore\Factory\QueryFactory;
+namespace TravelOrdersCore\User;
+use TravelOrdersCore\Factory\QueryFactory;
 
 class UserProfileService {
     protected $cols;

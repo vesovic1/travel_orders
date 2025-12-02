@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Routing;
+namespace TravelOrdersApi\Routing;
 
 use Cake\Chronos\Chronos;
 use Lcobucci\Clock\SystemClock;

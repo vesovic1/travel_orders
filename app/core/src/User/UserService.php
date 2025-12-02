@@ -1,8 +1,8 @@
 <?php
 
-namespace DomteraCore\User;
+namespace TravelOrdersCore\User;
 
-use DomteraCore\Factory\QueryFactory;
+use TravelOrdersCore\Factory\QueryFactory;
 
 class UserService
 {

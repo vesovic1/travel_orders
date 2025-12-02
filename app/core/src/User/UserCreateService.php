@@ -1,9 +1,9 @@
 <?php
 
-namespace DomteraCore\User;
+namespace TravelOrdersCore\User;
 
-use DomteraCore\Factory\QueryFactory;
-use DomteraCore\User\UserService;
+use TravelOrdersCore\Factory\QueryFactory;
+use TravelOrdersCore\User\UserService;
 use Cake\Validation\Validator;
 
 class UserCreateService
@@ -77,7 +77,7 @@ class UserCreateService
             'email' => $data['email'],
             'active' => $data['active'],
             'username' => $data['username'],
-            'password' => \DomteraCore\Security\Password::hash($data['password']),
+            'password' => \TravelOrdersCore\Security\Password::hash($data['password']),
             'created' => date('Y-m-d H:i:s')
         ];
 

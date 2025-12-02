@@ -1,9 +1,9 @@
 <?php
 
-namespace DomteraCore\User;
+namespace TravelOrdersCore\User;
 
-use DomteraCore\Factory\QueryFactory;
-use DomteraCore\User\UserService;
+use TravelOrdersCore\Factory\QueryFactory;
+use TravelOrdersCore\User\UserService;
 use Cake\Validation\Validator;
 
 class UserUpdateService
@@ -89,7 +89,7 @@ class UserUpdateService
         ];
 
         if (array_key_exists('password', $data) && !empty($data['password'])) {
-            $postData['password'] = \DomteraCore\Security\Password::hash($data['password']);
+            $postData['password'] = \TravelOrdersCore\Security\Password::hash($data['password']);
         }
 
         $this->query->update('users')

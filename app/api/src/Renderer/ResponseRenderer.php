@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Renderer;
+namespace TravelOrdersApi\Renderer;
 
 use finfo;
 use Psr\Http\Message\ResponseInterface;

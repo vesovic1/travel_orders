@@ -1,7 +1,7 @@
 <?php
 
-namespace DomteraCore\User;
-use DomteraCore\Factory\QueryFactory;
+namespace TravelOrdersCore\User;
+use TravelOrdersCore\Factory\QueryFactory;
 use Cake\Validation\Validator;
 
 
@@ -57,7 +57,7 @@ class UserProfileUpdateService {
         ];
 
         if (array_key_exists('password', $data) && !empty($data['password'])) {
-            $postData['password'] = \DomteraCore\Security\Password::hash($data['password']);
+            $postData['password'] = \TravelOrdersCore\Security\Password::hash($data['password']);
         }
 
         $this->query->update('users')

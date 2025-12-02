@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Middleware;
+namespace TravelOrdersApi\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

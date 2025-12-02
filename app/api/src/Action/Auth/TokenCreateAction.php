@@ -1,12 +1,12 @@
 <?php
 
-namespace DomteraApi\Action\Auth;
+namespace TravelOrdersApi\Action\Auth;
 
-use DomteraApi\Routing\JwtAuth;
+use TravelOrdersApi\Routing\JwtAuth;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use DomteraApi\Renderer\ResponseRenderer;
+use TravelOrdersApi\Renderer\ResponseRenderer;
 
 final class TokenCreateAction
 {
@@ -17,7 +17,7 @@ final class TokenCreateAction
      */
     public function __construct(
         private JwtAuth $jwtAuth,
-        private \DomteraCore\Auth\AuthService $authService,
+        private \TravelOrdersCore\Auth\AuthService $authService,
         private ResponseRenderer $renderer,
     )
     {
