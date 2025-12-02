@@ -36,4 +36,4 @@ Run migrations
 
 setup storage folder symlinks
 
-`ln -s /var/www/domtera/core/storage /var/www/domtera/api/storage`
+`ln -s /var/www/travel_orders/core/storage /var/www/travel_orders/api/storage`
