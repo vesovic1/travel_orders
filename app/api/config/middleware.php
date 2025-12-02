@@ -1,9 +1,9 @@
 <?php
 
 use Slim\App;
-use DomteraApi\Middleware\JwtClaimMiddleware;
-use DomteraApi\Middleware\HttpExceptionMiddleware;
-use DomteraApi\Middleware\ErrorHandlerMiddleware;
+use TravelOrdersApi\Middleware\JwtClaimMiddleware;
+use TravelOrdersApi\Middleware\HttpExceptionMiddleware;
+use TravelOrdersApi\Middleware\ErrorHandlerMiddleware;
 use Slim\Middleware\ErrorMiddleware;
 
 
@@ -17,7 +17,7 @@ return function (App $app) {
     // Add the Slim built-in routing middleware
     $app->addRoutingMiddleware();
 
-    $app->add(\DomteraApi\Middleware\CorsMiddleware::class);
+    $app->add(\TravelOrdersApi\Middleware\CorsMiddleware::class);
 
     // Catch HTTP exxceptions
     $app->add(HttpExceptionMiddleware::class);

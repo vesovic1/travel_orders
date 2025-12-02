@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Factory;
+namespace TravelOrdersApi\Factory;
 
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;

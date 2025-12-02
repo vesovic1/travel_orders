@@ -1,11 +1,11 @@
 <?php
 
-namespace DomteraApi\Action\Users;
+namespace TravelOrdersApi\Action\Users;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use DomteraApi\Renderer\ResponseRenderer;
-use DomteraCore\User\UserDeleteService;
+use TravelOrdersApi\Renderer\ResponseRenderer;
+use TravelOrdersCore\User\UserDeleteService;
 
 final class UsersDeleteAction
 {

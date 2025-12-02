@@ -1,8 +1,8 @@
 <?php
 
-namespace DomteraCore\Auth;
+namespace TravelOrdersCore\Auth;
 
-use DomteraCore\Factory\QueryFactory;
+use TravelOrdersCore\Factory\QueryFactory;
 
 class AuthService {
     public function __construct(

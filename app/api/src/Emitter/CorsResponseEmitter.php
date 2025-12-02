@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Emitter;
+namespace TravelOrdersApi\Emitter;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\ResponseEmitter;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraCore\Filesystem;
+namespace TravelOrdersCore\Filesystem;
 
 interface FileWriterInterface
 {

@@ -6,7 +6,7 @@ use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
 
-    $app->post('/auth/login', \DomteraApi\Action\Auth\TokenCreateAction::class);
+    $app->post('/auth/login', \TravelOrdersApi\Action\Auth\TokenCreateAction::class);
 
     // This group is protected with JWT.
     $app->group('', function (RouteCollectorProxy $api) {
@@ -17,6 +17,6 @@ return function (App $app) {
             require_once $file;
         }
 
-    })->add(\DomteraApi\Middleware\JwtAuthMiddleware::class);
+    })->add(\TravelOrdersApi\Middleware\JwtAuthMiddleware::class);
 };
 

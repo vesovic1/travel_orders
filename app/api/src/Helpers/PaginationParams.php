@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraApi\Helpers;
+namespace TravelOrdersApi\Helpers;
 
 final class PaginationParams
 {

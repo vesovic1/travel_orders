@@ -1,9 +1,9 @@
 <?php
 
-namespace DomteraCore\Storage;
+namespace TravelOrdersCore\Storage;
 
 use JmesPath\Env;
-use DomteraCore\Environment;
+use TravelOrdersCore\Environment;
 
 class LocalStorage {
 

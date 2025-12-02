@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraCore\Cache;
+namespace TravelOrdersCore\Cache;
 
 use Predis\ClientInterface;
 

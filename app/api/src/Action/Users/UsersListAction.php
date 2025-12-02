@@ -1,11 +1,11 @@
 <?php
 
-namespace DomteraApi\Action\Users;
+namespace TravelOrdersApi\Action\Users;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use DomteraApi\Renderer\ResponseRenderer;
-use DomteraCore\User\UserService;
+use TravelOrdersApi\Renderer\ResponseRenderer;
+use TravelOrdersCore\User\UserService;
 
 final class UsersListAction
 {
@@ -23,7 +23,7 @@ final class UsersListAction
     ): ResponseInterface {
 
 
-        $paginationParams = \DomteraApi\Helpers\PaginationParams::process($request->getQueryParams());
+        $paginationParams = \TravelOrdersApi\Helpers\PaginationParams::process($request->getQueryParams());
 
         $users = [
             'rows' => $this->userService->get($paginationParams, $request->getAttribute('cid')),

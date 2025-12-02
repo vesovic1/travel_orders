@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraCore\Security;
+namespace TravelOrdersCore\Security;
 
 class Password {
     public static function hash($password)

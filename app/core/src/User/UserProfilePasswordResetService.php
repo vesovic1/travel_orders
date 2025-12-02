@@ -1,10 +1,10 @@
 <?php
 
-namespace DomteraCore\User;
+namespace TravelOrdersCore\User;
 
 use Cake\Validation\Validator;
-use DomteraCore\Factory\QueryFactory;
-use DomteraCore\User\UserProfileService;
+use TravelOrdersCore\Factory\QueryFactory;
+use TravelOrdersCore\User\UserProfileService;
 
 class UserProfilePasswordResetService {
     protected $cols;
@@ -60,7 +60,7 @@ class UserProfilePasswordResetService {
             throw new \Exception('Stara lozinka je pogrešna');
         }
 
-        $postData['password'] = \DomteraCore\Security\Password::hash($data['new_password']);
+        $postData['password'] = \TravelOrdersCore\Security\Password::hash($data['new_password']);
 
         $this->query->update('users')
             ->set($postData)

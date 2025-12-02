@@ -1,6 +1,6 @@
 <?php
 
-use DomteraApi\Routing\JwtAuth;
+use TravelOrdersApi\Routing\JwtAuth;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
-use DomteraApi\Factory\LoggerFactory;
+use TravelOrdersApi\Factory\LoggerFactory;
 use Slim\Middleware\ErrorMiddleware;
 
 return [
@@ -56,7 +56,7 @@ return [
 
     // // Database connection
     // Db::class => function () {
-    //     return \DomteraCore\Db::getInstance();
+    //     return \TravelOrdersCore\Db::getInstance();
     //     // return $container->get(Psr17Factory::class);
     // },
 

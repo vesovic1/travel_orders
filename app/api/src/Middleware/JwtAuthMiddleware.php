@@ -1,9 +1,9 @@
 <?php
 
-namespace DomteraApi\Middleware;
+namespace TravelOrdersApi\Middleware;
 
-use DomteraApi\Routing\JwtAuth;
-use DomteraCore\Factory\QueryFactory;
+use TravelOrdersApi\Routing\JwtAuth;
+use TravelOrdersCore\Factory\QueryFactory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

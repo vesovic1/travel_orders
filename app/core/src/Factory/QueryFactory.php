@@ -1,6 +1,6 @@
 <?php
 
-namespace DomteraCore\Factory;
+namespace TravelOrdersCore\Factory;
 
 use Cake\Database\Connection;
 use Cake\Database\Query;
