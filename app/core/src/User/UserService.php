@@ -16,7 +16,7 @@ class UserService
         $this->cols = ['id', 'first_name', 'last_name', 'active', 'username', 'email'];
     }
 
-    public function get($params)
+    public function get($params, $companyId)
     {
 
         if (empty($params['orderBy'])) {
@@ -29,19 +29,21 @@ class UserService
             ->page($params['page'], $params['pageSize'])
             ->where([
                 'LOWER(CONCAT_WS(\' \', users.first_name, users.last_name, users.username, users.email)) LIKE ' => '%'.$params['search'].'%',
-                '_deleted' => 0
+                '_deleted' => 0,
+                'company_id' => $companyId
             ])
             ->execute()
             ->fetchAll('assoc');
         return $users;
     }
 
-    public function getCount($params)
+    public function getCount($params, $companyId)
     {
         $userCount = $this->query->select('users')->select('COUNT(*) as count')
         ->where([
             'LOWER(CONCAT_WS(\' \', users.first_name, users.last_name, users.username, users.email)) LIKE ' => '%'.$params['search'].'%',
-            '_deleted' => 0
+            '_deleted' => 0,
+            'company_id' => $companyId
         ])
         ->execute()->fetch();
         return $userCount[0];
