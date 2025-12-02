@@ -1,0 +1,21 @@
+<div class="app-form-input" [ngClass]="size">
+    <label *ngIf="label && !hideLabel" [for]="id">
+        <span [class.required]="isRequired">{{ label }}</span>
+    </label>
+    <input 
+        [id]="id"
+        [name]="id"
+        [type]="type" 
+        [min]="min" 
+        [max]="max" 
+        [placeholder]="placeholder" 
+        [value]="value"
+        [disabled]="isDisabled"
+        (input)="onChange($event)"
+        (blur)="touched()"
+        [ngClass]="{
+            'hasError': formControl.invalid && formControl.dirty
+        }"
+    />
+    <app-form-field-errors [control]="formControl"></app-form-field-errors>
+</div>

@@ -1,0 +1,200 @@
+@import "variables.scss";
+
+.app-menu-main {
+    width: 230px;
+    height: 100%;
+    background-color: var(--color-dark-800);
+    display: flex;
+    flex-direction: column;
+    &-header-holder {
+        height: 50px;
+        padding: 10px;
+        .app-header {
+            .app-logo-holder {
+                width: 32px;
+                height: 32px;
+                // background-color: var(--color-dark-900);
+                border-radius: 3px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .app-name {
+                font-size: $font-size + 7px;
+                font-weight: 600;
+                margin-left: 10px;
+                color: var(--color-white);
+            }
+        }
+        .menu-switch-button {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-right: 5px;
+            user-select: none;
+            span {
+                transition: transform .3s ease-in-out;
+                color: var(--color-blue-400);
+            }
+        }
+    }
+    &-content {
+        padding: 35px 15px 10px 10px;
+        flex-grow: 1;
+        .menu-holder {
+            height: 100%;
+            .menu-item {
+                height: 32px;
+                min-height: 32px;
+                border-radius: 3px;
+                margin-bottom: 5px;
+                padding: 0px 5px;
+                &-icon {
+                    margin-right: 8px;
+                    color: rgba(var(--color-silver-400--rgb), 0.5);
+                }
+                &-title {
+                    color: var(--color-silver-400);
+                }
+                &:hover {
+                    .menu-item-icon {
+                        color: var(--color-silver-400);
+                    }
+                    .menu-item-title {
+                        color: var(--color-white);
+                    }
+                }
+                &.active {
+                    background-color: var(--color-dark-700);
+                    .menu-item-icon {
+                        color: var(--color-silver-400);
+                    }
+                    .menu-item-title {
+                        color: var(--color-white);
+                        text-shadow: 0.25px 0px 0.1px var(--color-white), -0.25px 0px 0.1px var(--color-white);
+                    }
+                }
+            }
+            .profile-menu-item {
+                cursor: pointer;
+                user-select: none;
+                .profile-button-holder {
+                    margin-top: 10px;
+                    .profile-image-holder {
+                        width: 36px;
+                        height: 36px;
+                        background: var(--color-silver-400);
+                        border-radius: 50%;
+                        overflow: hidden;
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                        }
+                        span {
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;
+                            line-height: 36px;
+                            color: var(--color-dark-1000);
+                        }
+                    }
+                    .username {
+                        margin-left: 10px;
+                        font-size: $font-size + 1px;
+                        font-weight: 500;
+                        color: var(--color-silver-400);
+                    }
+                }
+            }
+            .app-menu-main-divider {
+                display: block;
+                width: 100%;
+                position: relative;
+                margin: 5px 0;
+                &::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0px;
+                    left: -10px;
+                    right: -15px;
+                    border-bottom: 1px solid var(--color-dark-300);
+                }
+            }
+        }
+    }
+
+    /* CLOSED MODE */
+
+    &.closed {
+        width: 52px;
+        .app-menu-main-header-holder {
+            padding: 10px;
+            .app-header {
+                .app-name {
+                    display: none;
+                }
+            }
+            .menu-switch-button {
+                display: none;
+            }
+        }
+        .app-menu-main-content {
+            padding: 35px 0px 10px 0px;
+
+            .menu-holder {
+                .menu-item {
+                    padding: 0px;
+                    height: 52px;
+                    place-content: center center;
+                    border-radius: 0px;
+                    &-title {
+                        display: none;
+                    }
+                    &-icon {
+                        margin: 0px;
+                    }
+                }
+                .profile-menu-item {
+                    .profile-button-holder {
+                        margin-top: 10px;
+                        .profile-image-holder {
+                            margin: 0px auto;
+                        }
+                        .username {
+                            display: none;
+                        }
+                    }
+                }
+                .app-menu-main-divider {
+                    &::after {
+                        left: 0px;
+                        right: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.sticky {
+        position: absolute;
+        z-index: 999;
+        .app-menu-main-header-holder {
+            .menu-switch-button {
+                span {
+                    &.rotate {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.app-menu-main-helper {
+    width: 52px;
+    height: 100%;
+}

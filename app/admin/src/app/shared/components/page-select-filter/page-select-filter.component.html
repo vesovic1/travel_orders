@@ -1,0 +1,60 @@
+<div class="option-item-holder" fxLayout="row" fxLayoutAlign="start center">
+    <div class="option-item padding-left" fxLayout="row" fxLayoutAlign="start center">
+        <div class="app-page-filter" fxLayout="row" fxLayoutAlign="start center" (click)="open()" [class.hasValue]="selectedItem">
+            <div class="app-page-filter__icon material-symbols-outlined">{{ icon }}</div>
+            <div *ngIf="!customTemplate" class="app-page-filter__value" [class.hasValue]="selectedItem">{{ selectedItem ? selectedItem.text : label }}</div>
+            <ng-container *ngIf="customTemplate">
+                <div *ngIf="selectedItem" class="app-page-filter__value" [innerHtml]="selectedItem.html | safeHtml"></div>
+                <div *ngIf="!selectedItem" class="app-page-filter__value">{{ label }}</div>
+            </ng-container>
+            <div *ngIf="selectedItem" class="app-page-filter__clear material-symbols-outlined" (click)="clear()" appClickStopPropagation>close</div>
+        </div>
+    </div>
+    <ng-select
+        #appSelectFilter
+        [labelForId]="id"
+        [appendTo]="appendTo"
+        [searchable]="searchable"
+        [formControl]="formControl"
+        [class.searchableFilter]="searchable"
+        [class.htmlTemplate]="customTemplate"
+        [ngClass]="{
+            'hasError': formControl.invalid && formControl.dirty
+        }"
+        (search)="customSearchFn($event)"
+        (blur)="touched()"
+        [loading]="loading"
+        notFoundText="Nema podataka za prikaz"
+        loadingText="Pretraga je u toku..."
+        [closeOnSelect]="closeOnSelect"
+        placeholder="Pretraga"
+    >
+
+        <ng-container *ngIf="!customTemplate">
+            <ng-option
+                *ngFor="let option of options"
+                [value]="option.value"
+            >
+                {{ option.text }}
+            </ng-option>
+        </ng-container>
+
+        <ng-container *ngIf="customTemplate">
+            <ng-option
+                *ngFor="let option of options"
+                [value]="option.value"
+                [class.htmlTemplateOption]="customTemplate"
+            >
+                <div
+                    class="app-select-option-template"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    [innerHtml]="option.html | safeHtml"
+                >
+                </div>
+
+            </ng-option>
+        </ng-container>
+
+    </ng-select>
+</div>

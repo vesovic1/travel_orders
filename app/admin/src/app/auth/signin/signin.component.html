@@ -1,0 +1,36 @@
+<div class="signup-block">
+    <div class="signup-form">
+        <form fxLayout="column">
+            <div class="signup-form__title">
+                <h1>Prijava</h1>
+            </div>
+
+            <div class="signup-form__form">
+                <app-form-input
+                    [formControl]="getFormControl('username')"
+                    placeholder="Korisničko ime"
+                    label="signInEmail"
+                    [hideLabel]="true"
+                    size="lg"
+                ></app-form-input>
+                <app-form-input
+                    [formControl]="getFormControl('password')"
+                    placeholder="Lozinka"
+                    label="signInPassword"
+                    [hideLabel]="true"
+                    type="password"
+                    size="lg"
+                ></app-form-input>
+                <div class="signup-form__button-holder">
+                    <button
+                        class="btn btn-primary btn-lg btn-wide"
+                        (click)="signin()"
+                        [disabled]="loading || signinForm.invalid"
+                    >
+                        Prijavi se
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

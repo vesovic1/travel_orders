@@ -1,0 +1,46 @@
+<ng-template #nodeTemplateRef let-node="node">
+  <div class="tree-node-wrapper" [class.disabled]="node.disabled">
+    <div class="node__label"   (click)="toggleNode(node)">
+      <div class="node__toggle">
+        <span class="material-symbols-outlined">
+          {{ node.childs && node.childs.length > 0 ? (node.open ? 'expand_more' : 'chevron_right') : '' }}
+        </span>
+      </div>
+      <div class="node__name">
+        {{ node.name }}
+        <div class="node__action" *ngIf="templateDictionary" appClickStopPropagation>
+          <ng-template
+              [ngTemplateOutlet]="templateDictionary"
+              [ngTemplateOutletContext]="{ item: node }"
+          >
+          </ng-template>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="node.childs && node.childs.length > 0 && node.open" class="node__children"
+      cdkDropList (cdkDropListDropped)="dropChilds($event, node.childs)"
+>
+      <div  *ngFor="let child of node.childs" cdkDrag
+        cdkDragLockAxis="y"
+        cdkDragHandle
+        (cdkDragStarted)="started(node)">
+        <ng-container  *ngTemplateOutlet="nodeTemplateRef; context: { node: child }"
+        >
+
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="tree-nodes" cdkDropList (cdkDropListDropped)="drop($event)">
+  <ng-container *ngFor="let node of data">
+    <div class="node-wrapper" cdkDrag
+    cdkDragLockAxis="y"
+    cdkDragHandle
+    (cdkDragStarted)="started(node)">
+      <ng-container *ngTemplateOutlet="nodeTemplateRef; context: { node: node }"></ng-container>
+    </div>
+  </ng-container>
+</div>
+

@@ -1,0 +1,299 @@
+/*APP SELECT*/
+
+.ng-select {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    // z-index: 1;
+    > div {
+        box-sizing: border-box;
+    }
+
+    .ng-select-container {
+        cursor: default;
+        display: flex;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        color: var(--color-input-label);
+        font-family: $font;
+        font-size: $font-size;
+        background-color: var(--color-white);
+        border-radius: 3px;
+        border: 1px solid var(--color-input-border);
+        min-height: 36px;
+        align-items: center;
+        .ng-value-container {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            padding-left: 10px;
+            .ng-placeholder {
+                color: rgba(var(--color-input-label--rgb), 0.65);
+                font-family: $font;
+                font-size: $font-size;
+            }
+        }
+        .ng-clear-wrapper {
+            color: var(--color-input-label);
+            cursor: pointer;
+            position: relative;
+            width: 22px;
+            -webkit-user-select: none;
+            user-select: none;
+            .ng-clear {
+                display: inline-block;
+                font-size: $font-size + 9px;
+                line-height: 1;
+                pointer-events: none;
+                color: rgba(var(--color-input-label--rgb), 0.65);
+            }
+        }
+        .ng-arrow-wrapper {
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            -webkit-user-select: none;
+            user-select: none;
+            width: 25px;
+            padding-right: 5px;
+            .ng-arrow {
+                color: var(--color-blue-400);
+                pointer-events: none;
+                display: inline-block;
+                border-style: solid;
+                border-width: 1px 1px 0 0;
+                content: "";
+                display: inline-block;
+                height: 8px;
+                left: 0px;
+                position: relative;
+                top: 4px;
+                transform: rotate(135deg);
+                vertical-align: top;
+                width: 8px;
+            }
+        }
+        &.ng-has-value {
+            .ng-placeholder {
+                display: none;
+            }
+        }
+    }
+    &.ng-select-opened {
+        .ng-select-container {
+            .ng-arrow-wrapper {
+                .ng-arrow {
+                    top: 7px;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+        &.ng-select-bottom {
+            .ng-select-container {
+                border-radius: 3px 3px 0px 0px;
+            }
+        }
+
+        &.ng-select-top {
+            .ng-select-container {
+                border-radius: 0px 0px 3px 3px;
+            }
+        }
+    }
+    &.ng-select-single {
+        .ng-select-container {
+            height: 36px;
+            .ng-value-container {
+                white-space: nowrap;
+                overflow: hidden;
+                .ng-value {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    .device-filter-option {
+                        .invalid-flag {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .ng-input {
+                padding: 0px 10px;
+            }
+        }
+    }
+    &.ng-select-multiple {
+        .ng-select-container {
+            .ng-value-container {
+                .ng-value {
+                    margin-top: 3px;
+                    margin-bottom: 3px;
+                    color: var(--color-input-label);
+                    background-color: var(--color-silver-300);
+                    border-radius: 2px;
+                    margin-right: 4px;
+                    padding-right: 3px;
+                    .ng-value-icon {
+                        display: inline-block;
+                        padding: 1px 5px;
+                        cursor: pointer;
+                        font-size: $font-size + 3px;
+                        line-height: 24px;
+                        vertical-align: middle;
+
+                        &:hover {
+                            background-color: var(--color-silver-400);
+                        }
+                    }
+                    .ng-value-label {
+                        display: inline-block;
+                        padding: 1px 5px;
+                        vertical-align: middle;
+                        font-size: $font-size - 1px;
+                    }
+
+                }
+            }
+        }
+    }
+    &.ng-select-focused {
+        .ng-select-container {
+            border-color: var(--color-blue-400);
+        }
+    }
+    &.ng-select-disabled {
+        .ng-select-container {
+            background-color: var(--color-input-disabled);
+            .ng-arrow-wrapper {
+                .ng-arrow {
+                    color: rgba(var(--color-input-label--rgb), 0.65);
+                }
+            }
+        }
+    }
+    &.hasError {
+        .ng-select-container {
+            border-color: var(--color-input-invalid);
+            color: var(--color-input-invalid);
+        }
+    }
+}
+
+/*Select panel styles*/
+.ng-dropdown-panel {
+    padding: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    z-index: 1050;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-input-border);
+    left: 0;
+    &.ng-select-top {
+        border-radius: 3px 3px 0px 0px;
+        bottom: 100%;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px -10px 10px -10px;
+
+    }
+    &.ng-select-bottom {
+        top: 100%;
+        border-radius: 0px 0px 3px 3px;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    }
+
+    .ng-dropdown-panel-items {
+        display: block;
+        height: auto;
+        box-sizing: border-box;
+        max-height: 240px;
+        overflow-y: auto;
+        &.scroll-host {
+            overflow: hidden;
+            overflow-y: auto;
+            position: relative;
+            display: block;
+        }
+        .ng-option {
+            height: 26px;
+            margin-bottom: 1px;
+            .ng-option-label {
+                display: block;
+                padding: 0px 10px;
+                line-height: 25px;
+            }
+
+            &.ng-option-marked {
+                border-radius: 3px;
+                background-color: var(--color-silver-300);
+            }
+
+            &.ng-option-selected {
+                border-radius: 3px;
+                background-color: rgba(var(--color-silver-400--rgb), 0.55);
+                font-weight: 500;
+            }
+            &.ng-option-disabled {
+                line-height: 25px;
+                color: var(--color-input-label);
+            }
+        }
+        .app-status-flag {
+            margin-top: 5px;
+        }
+    }
+}
+
+.app-select-option-template {
+    .app-phone-code-form-select {
+        .country-flag {
+            margin-right: 10px;
+        }
+        .country-code {
+            margin-right: 10px;
+        }
+    }
+    .app-project-status-form-select {
+        .status-flag {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .status-name {
+            margin-right: 10px;
+        }
+    }
+    .app-select-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+        box-shadow:
+            rgba(9, 30, 66, 0.25) 0px 1px 1px,
+            rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    }
+    .app-select-device-name {
+        flex: 1;
+    }
+    .app-select-device-brand {
+        border: 1px solid var(--color-silver-700);
+        color: var(--color-silver-700);
+        height: 17px;
+        line-height: 17px;
+        padding: 0px 6px;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+    .app-status-flag {
+        margin-top: 0px;
+    }
+    .device-filter-option {
+        width: 100%;
+        .invalid-flag {
+            color: var(--color-input-invalid);
+        }
+    }
+}

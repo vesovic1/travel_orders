@@ -1,0 +1,216 @@
+
+/*APP DATE PICKER*/
+
+.app-date-picker {
+    width: 100%;
+    .dp-input-container {
+        height: 36px;
+        .dp-picker-input {
+            border: 1px solid var(--color-input-border);
+            border-radius: 3px;
+            height: 100%;
+            margin: 0px;
+            padding: 6px 35px 6px 10px;
+            width: 100%;
+            color: var(--color-input-label);
+            font-family: $font;
+            font-size: $font-size;
+            &::placeholder {
+                color: rgba(var(--color-input-label--rgb), 0.65);
+                opacity: 1;
+            }
+
+            &:-ms-input-placeholder {
+                color: rgba(var(--color-input-label--rgb), 0.65);
+            }
+
+            &::-ms-input-placeholder {
+                color: rgba(var(--color-input-label--rgb), 0.65);
+            }
+            &:focus {
+                border-color: var(--color-blue-400);
+            }
+            &:disabled {
+                background-color: var(--color-input-disabled);
+            }
+        }
+    }
+    &.hasError {
+        .dp-input-container {
+            .dp-picker-input {
+                color: var(--color-input-invalid);
+                border-color: var(--color-input-invalid);
+            }
+        }
+
+    }
+}
+
+.dp-popup {
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: none;
+    dp-time-select {
+        border-top: 1px solid var(--color-silver-400);
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        .dp-time-select-controls {
+            padding: 10px;
+            .dp-time-select-control {
+                .dp-time-select-control-up, .dp-time-select-control-down {
+                    background-color: var(--color-white);
+                    border: none;
+                    outline: none;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    transition: background-color 0.25s ease-in-out;
+                    &:hover {
+                        background-color: var(--color-silver-200);
+                    }
+                    &::before {
+                        color: var(--color-blue-400);
+                    }
+                }
+                .dp-time-select-display-hours, .dp-time-select-display-minutes, .dp-time-select-display-meridiem {
+                    font-size: $font-size + 1px;
+                }
+            }
+        }
+    }
+    .dp-calendar-nav-container {
+        border: none;
+        margin-bottom: 10px;
+        .dp-nav-header {
+            left: 0px;
+            .dp-nav-header-btn {
+                border: none;
+                outline: none;
+                margin: 0px;
+                padding: 3px 10px;
+                border-radius: 5px;
+                font-weight: 500;
+                font-size: $font-size;
+                font-family: $font;
+                background-color: var(--color-white);
+                transition: background-color 0.25s ease-in-out;
+                &:hover {
+                    background-color: var(--color-silver-200);
+                }
+            }
+        }
+        .dp-nav-btns-container {
+            .dp-calendar-nav-left, .dp-calendar-nav-right {
+                background-color: var(--color-white);
+                border: none;
+                outline: none;
+                margin: 0px;
+                padding: 0px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background-color: var(--color-white);
+                transition: background-color 0.25s ease-in-out;
+                &::before {
+                    color: var(--color-blue-400);
+                }
+                &:hover {
+                    background-color: var(--color-silver-200);
+                }
+            }
+            .dp-calendar-nav-left {
+                margin-right: 5px;
+                &::before {
+                    margin-left: 3px;
+                }
+            }
+            .dp-calendar-nav-right {
+                &::before {
+                    margin-right: 3px;
+                }
+            }
+            .dp-current-location-btn {
+                background: rgba(var(--color-blue-400--rgb),.6);
+                border: 1px solid rgba(var(--color-blue-400--rgb),.6);
+                box-shadow: inset 0 0 0 4px var(--color-white);
+                width: 18px;
+                height: 18px;
+                margin-right: 5px;
+                transition: all 0.25s ease-in-out;
+                &:hover {
+                    background: rgba(var(--color-blue-400--rgb), 1);
+                    border: 1px solid rgba(var(--color-blue-400--rgb), 1);
+                }
+            }
+        }
+    }
+    .dp-day-calendar-container {
+        padding: 10px;
+        border-radius: 3px;
+
+        .dp-calendar-wrapper {
+            border: none;
+            .dp-weekdays {
+                font-size: $font-size - 2px;
+                font-family: $font;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: var(--color-silver-800);
+                .dp-calendar-weekday {
+                    border: none;
+                    margin: 2px;
+                }
+            }
+            .dp-calendar-week {
+                .dp-calendar-day {
+                    background-color: var(--color-white);
+                    border: 1px solid var(--color-white);
+                    width: 30px;
+                    height: 30px;
+                    border: none;
+                    outline: none;
+                    border-radius: 50%;
+                    margin: 2px;
+                    transition: background-color 0.25s ease-in-out;
+                    &:hover {
+                        background-color: var(--color-silver-200);
+                    }
+                    &.dp-prev-month {
+                        opacity: 0.3;
+                    }
+                    &.dp-current-day {
+                        border: 1px solid var(--color-blue-400);
+                    }
+                    &.dp-selected {
+                        background-color: var(--color-blue-400);
+                        &:hover {
+                            background-color: var(--color-blue-400);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+    .dp-month-calendar-container {
+        padding: 10px;
+        border-radius: 3px;
+        .dp-calendar-wrapper {
+            border: none;
+            .dp-calendar-month {
+                border-radius: 50%;
+                border: none;
+                background-color: var(--color-white);
+                transition: background-color 0.25s ease-in-out;
+                &:hover {
+                    background-color: var(--color-silver-200);
+                }
+                &.dp-current-month {
+                    border: 1px solid var(--color-blue-400);
+                    color: var(--color-black);
+                }
+            }
+        }
+    }
+}

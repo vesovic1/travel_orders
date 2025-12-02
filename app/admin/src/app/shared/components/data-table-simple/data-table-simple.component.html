@@ -1,0 +1,56 @@
+<div class="app-table-simple app-table-simple--{{ settings.class || 'standard' }}"  fxLayout="column">
+    <div class="app-table-simple__header">
+        <div class="app-table-simple__row" fxLayout="row" fxFlex>
+            <div
+                *ngFor="let col of settings.cols"
+                class="col-w{{col.width || 0}} col-align-{{col.align ?? 'left' }} col-{{ col.code }}"
+                [class.col]="col.code !== 'action'"
+                fxFlex
+            >
+                <span *ngIf="col.code !== 'action'">{{ col.name }}</span>
+                <div *ngIf="col.code === 'action'" class="col-action__holder" fxLayout="row" fxLayoutAlign="start center"></div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #defaultCell let-data>
+        {{ data }}
+    </ng-template>
+
+    <ng-template #defaultHtmlCell let-data>
+        <span [innerHTML]="data"></span>
+    </ng-template>
+
+    <ng-template #defaultHtmlDetails let-data>
+        <div [innerHTML]="data"></div>
+    </ng-template>
+
+    <div class="app-table-simple__body">
+        <ng-container *ngIf="itemsFiltered && itemsFiltered.length">
+            <div
+                class="app-table-simple__row"
+                *ngFor="let item of itemsFiltered; let i = index"
+                fxLayout="row"
+                fxFlex
+                [class.clickable]="rowClickable"
+                (click)="onRowClick(item)"
+                [class.selected]="i === selectedIndex"
+                [class.no-border]="item.expand"
+                [class.used]="item.used"
+                >
+                <div
+                    *ngFor="let col of settings.cols"
+                    class="col-w{{col.width || 0}} col-align-{{col.align ?? 'left' }} col-{{ col.code }}"
+                    [class.col]="col.code !== 'action'">
+                    <ng-template
+                        [ngTemplateOutlet]="templateDictionary[col.code] || (col.isHtml ? defaultHtmlCell : defaultCell)"
+                        [ngTemplateOutletContext]="{ $implicit: item[col.code], item: item}">
+                    </ng-template>
+                </div>
+            </div>
+        </ng-container>
+        <div class="app-table-simple__row empty" *ngIf="itemsFiltered && !itemsFiltered.length" >
+            <div class="empty-list-row">{{ emptyListMessage || 'Nema podataka za prikaz!' }}</div>
+        </div>
+    </div>
+</div>

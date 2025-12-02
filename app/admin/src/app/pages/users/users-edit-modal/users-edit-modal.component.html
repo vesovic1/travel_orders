@@ -1,0 +1,92 @@
+<div class="app-modal users-edit-modal" fxLayout="column">
+    <div class="app-modal__header" fxLayout="row" fxLayoutAlign="start center">
+        <h2 *ngIf="isAddMode" fxFlex>Novi korisnik</h2>
+        <h2 *ngIf="!isAddMode && user" fxFlex>{{ user.first_name }} {{ user.last_name }}</h2>
+        <button class="btn btn-icon">
+            <span class="material-symbols-outlined" (click)="close(false)">close</span>
+        </button>
+    </div>
+    <div class="app-modal__content">
+        <div class="app-modal-spinner" *ngIf="saving || loading">
+            <app-spinner [diameter]="30"></app-spinner>
+        </div>
+        <div class="app-form-group" fxLayout="column" [class.app-content-loading]="saving || loading">
+
+            <div class="app-form-element">
+                <app-form-checkbox [formControl]="getFormControl(activeFormControl)">Aktivan</app-form-checkbox>
+            </div>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(firstNameFormControl)"
+                        label="Ime"
+                        placeholder="Unesite ime"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(lastNameFormControl)"
+                        label="Prezime"
+                        placeholder="Unesite prezime"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(usernameFormControl)"
+                        label="Korisničko ime"
+                        placeholder="Unesite korisničko ime"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(emailFormControl)"
+                        label="Email"
+                        placeholder="Unesite email adresu"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <div class="app-form-divider">Lozinka</div>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(passwordFormControl)"
+                        label="Lozinka"
+                        type="password"
+                        placeholder="Unesite lozinku"
+                    ></app-form-input>
+                </div>
+
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(passwordConfirmFormControl)"
+                        label="Potvrda lozinke"
+                        type="password"
+                        placeholder="Potvrdite lozinku"
+                    ></app-form-input>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="app-modal__footer">
+        <div class="buttons-holder" fxLayout="row" fxLayoutAlign="end center">
+            <button class="btn btn-bordered" (click)="close(false)">
+                Zatvori
+            </button>
+            <button
+                class="btn btn-primary"
+                (click)="save()"
+                [disabled]="saving || loading || form.invalid"
+            >
+                Sačuvaj
+            </button>
+        </div>
+    </div>
+</div>

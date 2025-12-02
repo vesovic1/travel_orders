@@ -1,0 +1,55 @@
+@import "variables.scss";
+.node__label {
+    cursor: pointer;
+    border: 1px solid var(--color-input-border);
+    min-height: 36px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background-color: var(--color-silver-light);
+    transition: background-color .2s ease-in-out;
+    .node__toggle {
+        width: 30px;
+        height: 36px;
+        border-right: 1px solid var(--color-input-border);
+        span {
+            line-height: 36px;
+            color: var(--color-button-default);
+        }
+    }
+    .node__name {
+        padding-left: 20px;
+        font-size: $font-size;
+        font-weight: 500;
+        line-height: 18px;
+        display: inline;
+        &__description {
+            color: var(--color-silver-700);
+            font-size: 13px;
+            margin-left: 10px;
+            font-style: italic;
+            font-weight: 400;
+        }
+    }
+    &:hover {
+        background-color: var(--color-silver-100);
+    }
+    &.disabled {
+        opacity: .5;
+        cursor: default;
+        &:hover {
+            background-color: var(--color-silver-light);
+        }
+    }
+}
+.node__children {
+    margin-left: 30px;
+}
+
+.node {
+    width: 100%;
+    .node__children {
+        &:first-child {
+            margin-left: 0px;
+        }
+    }
+}

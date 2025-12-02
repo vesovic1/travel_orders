@@ -1,0 +1,179 @@
+<div
+    class="app-data-table apr-data-table--{{ settings.class || 'standard' }}"
+    fxLayout="column"
+>
+    <div class="app-data-table__header">
+        <div class="app-data-table__row" fxLayout="row" fxFlex>
+            <div class="col col-checkbox col-w30 col-align-center" *ngIf="checkbox">
+                <app-form-checkbox
+                    [compact]="true"
+                    (change)="setAll()"
+                    [(ngModel)]="allSelected"
+                    [partialSelection]="totalSelected > 0 && !allSelected"
+                ></app-form-checkbox>
+            </div>
+            <div
+                *ngFor="let col of settings.cols"
+                class="col-w{{ col.width || 0 }} col-align-{{
+                    col.align ?? 'left'
+                }} col-{{ col.code }}"
+                [class.sortable]="col.sort"
+                [class.col]="col.code !== 'action'"
+                (click)="sortBy(col)"
+                fxFlex
+            >
+                <span *ngIf="col.code !== 'action'">{{ col.name }}</span>
+
+                <span
+                    *ngIf="
+                        col.sort &&
+                        col.code === sortData.code &&
+                        sortData.type === 'asc'
+                    "
+                    class="sort-icons marked material-symbols-outlined"
+                    >keyboard_arrow_up</span
+                >
+                <span
+                    *ngIf="
+                        col.sort &&
+                        col.code === sortData.code &&
+                        sortData.type === 'desc'
+                    "
+                    class="sort-icons marked material-symbols-outlined"
+                    >keyboard_arrow_down</span
+                >
+                <span
+                    *ngIf="col.sort && col.code !== sortData.code"
+                    class="sort-icons material-symbols-outlined"
+                    >unfold_more</span
+                >
+
+                <div
+                    *ngIf="col.code === 'action'"
+                    class="col-action__holder"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <!-- <button class="btn btn-icon">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #defaultCell let-data>
+        {{ data }}
+    </ng-template>
+
+    <ng-template #defaultHtmlCell let-data>
+        <span [innerHTML]="data"></span>
+    </ng-template>
+
+    <div class="app-data-table__body" #dataTableBody>
+        <ng-container *ngIf="items && items.rows && items.rows.length">
+            <div
+                class="app-data-table__row"
+                *ngFor="let item of items.rows; let i = index"
+                fxLayout="row"
+                fxFlex
+                (click)="onRowClick(item)"
+                [class.marked]="item.marked"
+                [class.danger]="item.danger"
+                [class.warning]="item.warning"
+                [class.selected-row]="item.selected"
+                [class.clickable]="rowClickable"
+                [class.loading]="item.loading"
+                [ngClass]="rowClass"
+
+            >
+                <div class="col col-checkbox col-w30 col-align-center" *ngIf="checkbox" appClickStopPropagation>
+                    <app-form-checkbox
+                        [compact]="true"
+                        (change)="changeCheck()"
+                        [(ngModel)]="item.selected"
+                    ></app-form-checkbox>
+                </div>
+                <div
+                    *ngFor="let col of settings.cols"
+                    class="col col-w{{ col.width || 0 }} col-align-{{
+                        col.align ?? 'left'
+                    }} col-{{ col.code }}"
+                    [class.col]="col.code !== 'action'"
+
+                >
+                    <ng-template
+                        [ngTemplateOutlet]="
+                            templateDictionary[col.code] ||
+                            (col.isHtml ? defaultHtmlCell : defaultCell)
+                        "
+                        [ngTemplateOutletContext]="{
+                            $implicit: item[col.code],
+                            item: item,
+                            index: i
+                        }"
+                    >
+                    </ng-template>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="items && items.rows && !items.rows.length">
+            <div class="app-data-table__row empty-table-row" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+                Nema podataka za prikaz
+            </div>
+        </ng-container>
+    </div>
+    <div class="app-data-table__pagination" *ngIf="items && items.rows && items.rows.length && paginate">
+        <div
+            class="pagination-holder"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <ng-select
+                [searchable]="false"
+                [(ngModel)]="pageSize"
+                [clearable]="false"
+                [multiple]="false"
+                [closeOnSelect]="true"
+                (change)="showPerPage($event)"
+            >
+                <ng-option *ngFor="let limit of limits" [value]="limit">{{
+                    limit
+                }}</ng-option>
+            </ng-select>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <button
+                    class="btn btn-icon-bordered"
+                    [disabled]="pager.currentPage === 1"
+                    (click)="setPage(1)"
+                >
+                    <span class="material-symbols-outlined">first_page</span>
+                </button>
+                <button
+                    class="btn btn-icon-bordered"
+                    [disabled]="pager.currentPage === 1"
+                    (click)="setPage(pager.currentPage - 1)"
+                >
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div class="label">
+                    {{ from }} - {{ to }} of {{ pager.totalItems }}
+                </div>
+                <button
+                    class="btn btn-icon-bordered"
+                    [disabled]="pager.currentPage === pager.totalPages"
+                    (click)="setPage(pager.currentPage + 1)"
+                >
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+                <button
+                    class="btn btn-icon-bordered"
+                    [disabled]="pager.currentPage === pager.totalPages"
+                    (click)="setPage(pager.totalPages)"
+                >
+                    <span class="material-symbols-outlined">last_page</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

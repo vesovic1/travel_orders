@@ -1,0 +1,325 @@
+<app-menu-top menu="components"></app-menu-top>
+
+<app-page>
+    <div class="app-page-card">
+
+        <div fxLayout="column">
+            <h1>Example heading 1</h1>
+            <h2>Example heading 2</h2>
+            <h3>Example heading 3</h3>
+            <h4>Example heading 4</h4>
+            <h5>Example heading 5</h5>
+            <h6>Example heading 6</h6>
+        </div>
+
+        <div class="app-form-group" fxLayout="column">
+
+            <h3>Spinner</h3>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <app-spinner></app-spinner>
+                <app-spinner [diameter]="50"></app-spinner>
+                <app-spinner [diameter]="40"></app-spinner>
+                <app-spinner [diameter]="30"></app-spinner>
+                <app-spinner [diameter]="24"></app-spinner>
+            </div>
+
+            <h3>Checkbox</h3>
+
+            <div class="app-form-element">
+                <app-form-checkbox
+                    [formControl]="getFormControl(checkboxFormControlName)"
+                >
+                    When a new subtask is created in a parent task I am watching
+                </app-form-checkbox>
+            </div>
+            <div class="app-form-element">
+                <app-form-checkbox
+                    [formControl]="getFormControl(checkboxCheckedFormControlName)"
+                >
+                    When a new subtask is created in a parent task I am watching ( checked )
+                </app-form-checkbox>
+            </div>
+            <div class="app-form-element">
+                <app-form-checkbox
+                    [formControl]="getFormControl(checkboxDisabledFormControlName)"
+                >
+                    When a new subtask is created in a parent task I am watching ( disabled )
+                </app-form-checkbox>
+            </div>
+
+            <h3>Radio ( vertical )</h3>
+
+            <div class="app-form-element">
+                <app-form-radio
+                    [formControl]="getFormControl(genderFormControlName)"
+                    [options]="genderOptions"
+                >
+                </app-form-radio>
+            </div>
+
+            <h3>Radio ( horizontal )</h3>
+
+            <div class="app-form-element">
+                <app-form-radio
+                    [formControl]="getFormControl(gender2FormControlName)"
+                    [options]="genderOptions"
+                    orientation="horizontal"
+                    groupName="radio2"
+                >
+                </app-form-radio>
+            </div>
+
+            <h3>Radio ( disabled )</h3>
+
+            <div class="app-form-element">
+                <app-form-radio
+                    [formControl]="getFormControl(gender3FormControlName)"
+                    [options]="genderOptions"
+                    groupName="radio3"
+                >
+                </app-form-radio>
+            </div>
+
+            <h3>Date picker</h3>
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-date-picker
+                        [formControl]="getFormControl(dateOfBirthFormControlName)"
+                        label="Date of birth"
+                        placeholder="Enter your date of birth"
+                    ></app-form-date-picker>
+                </div>
+
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-date-picker
+                        [formControl]="getFormControl(datetimeOfBirthFormControlName)"
+                        label="Date of birth (Datetime)"
+                        placeholder="Enter your date of birth"
+                        mode="daytime"
+                        format="DD.MM.YYYY. HH:mm:ss"
+                    ></app-form-date-picker>
+                </div>
+
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-date-picker
+                        [formControl]="getFormControl(dateDisabledFormControlName)"
+                        label="Date of birth (Disabled)"
+                        placeholder="Enter your date of birth"
+                        mode="day"
+                    ></app-form-date-picker>
+                </div>
+
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-date-picker
+                        [formControl]="getFormControl(dateRequiredFormControlName)"
+                        label="Date of birth (Required)"
+                        placeholder="Enter your date of birth"
+                        mode="day"
+                    ></app-form-date-picker>
+                </div>
+
+            </div>
+
+            <h3>Text input</h3>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(firstNameFormControlName)"
+                        label="First name"
+                        placeholder="Please enter your first name"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(lastNameFormControlName)"
+                        label="Last name (Not required)"
+                        placeholder="Please enter your last name"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <h3>Password input</h3>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(passwordStandardFormControlName)"
+                        label="Password (Password standard)"
+                        type="password"
+                        placeholder="Please enter your password"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50" fxLayout="column">
+                    <app-form-input
+                        [formControl]="getFormControl(passwordFormControlName)"
+                        label="Password (Password strength)"
+                        type="password"
+                        placeholder="Please enter your password"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <h3>Email input</h3>
+
+            <div class="form-row" fxLayout="row" fxlayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(emailFormControlName)"
+                        label="Email"
+                        placeholder="Please enter your email address"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(disabledInputFormControlName)"
+                        label="Input (disabled)"
+                        placeholder="Disabled input field"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <h3>Number input</h3>
+
+            <div class="form-row" fxLayout="row" fxlayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(ageFormControlName)"
+                        type="number"
+                        label="How old are you?"
+                        placeholder="Please enter your age"
+                    ></app-form-input>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-input
+                        [formControl]="getFormControl(numberMinMaxFormControlName)"
+                        type="number"
+                        label="How old are you? (Min & Max)"
+                        min="1"
+                        max="100"
+                        placeholder="Please enter your age"
+                    ></app-form-input>
+                </div>
+            </div>
+
+            <h3>Textarea input</h3>
+
+            <div class="form-row" fxLayout="row" fxlayoutAlign="start start">
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-textarea
+                        [formControl]="getFormControl(descriptionFormControlName)"
+                        label="Description"
+                        placeholder="Type something here"
+                    ></app-form-textarea>
+                </div>
+                <div class="app-form-element" fxFlex="50">
+                    <app-form-textarea
+                        [formControl]="getFormControl(descriptionDisabledFormControlName)"
+                        label="Description (Disabled)"
+                        placeholder="Type something here"
+                    ></app-form-textarea>
+                </div>
+            </div>
+
+            <h3>Select input</h3>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languageFormControlName)"
+                        [options]="languageOptions"
+                        label="Language (Standard)"
+                        placeholder="Select your language"
+                    ></app-form-select>
+                </div>
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languageDisabledFormControlName)"
+                        [options]="languageOptions"
+                        label="Language (Disabled)"
+                        placeholder="Select your language"
+                    ></app-form-select>
+                </div>
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languageRequiredFormControlName)"
+                        [options]="languageOptions"
+                        label="Language (Required)"
+                        placeholder="Select your language"
+                        [clearable]="true"
+                    ></app-form-select>
+                </div>
+            </div>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languageSearchableFormControlName)"
+                        [options]="languageOptions"
+                        label="Language (Search)"
+                        placeholder="Select your language"
+                        [searchable]="true"
+                    ></app-form-select>
+                </div>
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languagePreselectedFormControlName)"
+                        [options]="languageOptions"
+                        label="Language (Preselected)"
+                        placeholder="Select your language"
+                    ></app-form-select>
+                </div>
+                <div class="app-form-element" fxFlex="33">
+                    <app-form-select
+                        [formControl]="getFormControl(languageMultiselectFormControlName)"
+                        [options]="carsOptions"
+                        label="Language (Multi select)"
+                        placeholder="Select your favorite cars"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [clearable]="true"
+                        [searchable]="true"
+                    ></app-form-select>
+                </div>
+            </div>
+
+            <h3>Color picker input</h3>
+
+            <div class="form-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-color-picker
+                        [formControl]="getFormControl(colorFormControlName)"
+                        label="Color"
+                        placeholder="Select color"
+                    ></app-form-color-picker>
+                </div>
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-color-picker
+                        [formControl]="getFormControl(colorPreselectedFormControlName)"
+                        label="Color (Preselected)"
+                        placeholder="Select color"
+                    ></app-form-color-picker>
+                </div>
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-color-picker
+                        [formControl]="getFormControl(colorDisabledFormControlName)"
+                        label="Color (Disabled)"
+                        placeholder="Select color"
+                    ></app-form-color-picker>
+                </div>
+                <div class="app-form-element" fxFlex="25">
+                    <app-form-color-picker
+                        [formControl]="getFormControl(colorRequiredFormControlName)"
+                        label="Color (Required)"
+                        placeholder="Select color"
+                    ></app-form-color-picker>
+                </div>
+            </div>
+        </div>
+        <div class="button-save-container" fxLayout="row" fxLayoutAlign="end center">
+            <button class="btn btn-bordered">Close</button>
+            <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">Save</button>
+        </div>
+    </div>
+</app-page>

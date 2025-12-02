@@ -1,0 +1,11 @@
+@import "variables.scss";
+
+.form-field-errors {
+    min-height: 20px;
+    .form-field-error {
+        font-size: $font-size - 2px;
+        color: var(--color-input-invalid);
+        line-height: 13px;
+        display: inline-block;
+    }
+}

@@ -1,0 +1,68 @@
+@function toDecimal($color) {
+    @return red($color) + ", " + green($color) + ", " + blue($color);
+}
+
+:root {
+    --color-black: #{ $color-black };
+    --color-black--rgb: #{ toDecimal($color-black) };
+    --color-white: #{ $color-white };
+    --color-white--rgb: #{ toDecimal($color-white) };
+    --color-dark-100: #{ $color-dark-100 };
+    --color-dark-200: #{ $color-dark-200 };
+    --color-dark-300: #{ $color-dark-300 };
+    --color-dark-400: #{ $color-dark-400 };
+    --color-dark-500: #{ $color-dark-500 };
+    --color-dark-600: #{ $color-dark-600 };
+    --color-dark-700: #{ $color-dark-700 };
+    --color-dark-800: #{ $color-dark-800 };
+    --color-dark-800--rgb: #{ toDecimal($color-dark-800) };
+    --color-dark-900: #{ $color-dark-900 };
+    --color-dark-1000: #{ $color-dark-1000 };
+    --color-silver-light: #{ $color-silver-light };
+    --color-silver-light--rgb: #{ toDecimal($color-silver-light) };
+    --color-silver-100: #{ $color-silver-100 };
+    --color-silver-200: #{ $color-silver-200 };
+    --color-silver-300: #{ $color-silver-300 };
+    --color-silver-400: #{ $color-silver-400 };
+    --color-silver-400--rgb: #{ toDecimal($color-silver-400) };
+    --color-silver-500: #{ $color-silver-500 };
+    --color-silver-600: #{ $color-silver-600 };
+    --color-silver-700: #{ $color-silver-700 };
+    --color-silver-800: #{ $color-silver-800 };
+    --color-blue-400: #{ $color-blue-400 };
+    --color-blue-500: #{ $color-blue-500 };
+    --color-blue-400--rgb: #{ toDecimal($color-blue-400) };
+    --color-blue-800: #{ $color-blue-800 };
+    --color-error: #{ $color-error };
+    --color-error--rgb: #{ toDecimal($color-error) };
+    --color-error-500: #{ $color-error-500 };
+    --color-error-500--rgb: #{ toDecimal($color-error-500) };
+    --color-gold: #{ $color-gold };
+    --color-gold--rgb: #{ toDecimal($color-gold) };
+    --color-warning: #{ $color-warning };
+    --color-warning--rgb: #{ toDecimal($color-warning) };
+    --color-warning-500: #{ $color-warning-500 };
+    --color-warning-500--rgb: #{ toDecimal($color-warning-500) };
+    --color-warning-800: #{ $color-warning-800 };
+    --color-success: #{ $color-success };
+    --color-success--rgb: #{ toDecimal($color-success) };
+    --color-success-200: #{ $color-success-200 };
+    --color-success-200--rgb: #{ toDecimal($color-success-200) };
+    --color-disabled: #{ $color-disabled };
+    --color-checkbox-border: #{ $color-checkbox-border };
+    --color-input-label: #{ $color-input-label };
+    --color-input-label--rgb: #{ toDecimal($color-input-label) };
+    --color-input-border: #{ $color-input-border };
+    --color-input-invalid: #{ $color-input-invalid };
+    --color-input-disabled: #{ $color-input-disabled };
+    --color-button-default: #{ $color-button-default };
+    --color-button-default--rgb: #{ toDecimal($color-button-default) };
+    --color-button-hover: #{ $color-button-hover };
+    --color-button-hover-text: #{ $color-button-hover-text };
+    --color-button-border: #{ $color-button-border };
+    --color-background: #{ $color-background };
+    --color-auth-title: #{ $color-auth-title };
+    --color-auth-subtitle: #{ $color-auth-subtitle };
+    --color-auth-text: #{ $color-auth-text };
+    --color-auth-text-light: #{ $color-auth-text-light };
+}

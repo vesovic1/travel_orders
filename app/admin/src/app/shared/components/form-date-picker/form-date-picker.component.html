@@ -1,0 +1,26 @@
+<div class="app-form-date-picker">
+    <label [for]="id">
+        <span [class.required]="isRequired">{{ label }}</span>
+    </label>
+    <div class="app-picker-wrapper">
+        <dp-date-picker
+            #appDatePicker
+            *ngIf="config"
+            [id]="id"
+            [placeholder]="placeholder"
+            [formControl]="formControl"
+            [mode]="mode"
+            [config]="config"
+            theme="app-date-picker"
+            (input)="onChange($event)"
+            (blur)="touched()"
+            [ngClass]="{
+                'hasError': formControl.invalid && formControl.dirty
+            }"
+        ></dp-date-picker>
+
+        <span class="material-symbols-outlined" [class.disabled]="isDisabled" (click)="open()">calendar_month</span>
+    </div>
+
+    <app-form-field-errors [control]="formControl" *ngIf="!hideErrors"></app-form-field-errors>
+</div>

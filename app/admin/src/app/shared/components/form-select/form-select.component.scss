@@ -1,0 +1,17 @@
+.app-form-select {
+    label {
+        display: block;
+        line-height: 24px;
+        font-weight: 500;
+        margin-bottom: 3px;
+        width: fit-content;
+        span {
+            &.required {
+                &::after {
+                    content: '*';
+                    color: var(--color-input-invalid);
+                }
+            }
+        }
+    }
+}

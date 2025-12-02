@@ -1,0 +1,59 @@
+<div class="app-modal__options" fxLayout="row" fxLayout="start center">
+
+    <div *ngIf="showNewFolder" fxlayout="row" fxlayoutalign="start center" class="app-filter-button" (click)="newFolder()">
+        <span class="app-filter-button__icon material-symbols-outlined">folder</span>
+        <span class="app-filter-button__value">Novi folder</span>
+    </div>
+
+    <app-file-manager-uploader [baseUrl]="baseUrl" [folder]="selectedFolder" (uploadFinished)="afterUpload()"></app-file-manager-uploader>
+
+</div>
+<div class="app-modal__content">
+    <div class="app-modal-spinner" *ngIf="loading || downloading">
+        <app-spinner [diameter]="30"></app-spinner>
+    </div>
+    <div class="app-modal__content__holder">
+
+        <div class="app-documents-empty" *ngIf="!documents.length && !loading">Nema podataka za prikaz</div>
+
+        <div class="app-documents-list" fxLayout="column" *ngIf="documents.length && !loading">
+            <div class="app-documents-list__header" fxLayout="column">
+                <div class="app-documents-list__row" fxLayout="row" fxLayoutAlign="start center">
+                    <div class="app-documents-list__col col-name">Naziv</div>
+                    <div class="app-documents-list__col col-date">Datum</div>
+                    <div class="app-documents-list__col col-size">Veličina</div>
+                    <div class="app-documents-list__col col-action"></div>
+                </div>
+            </div>
+            <div class="app-documents-list__content" fxLayout="column">
+                <div class="app-documents-list__row" fxLayout="row" fxLayoutAlign="start center" *ngFor="let document of documents" (click)="select(document)">
+                    <div class="app-documents-list__col col-name">
+                        <div class="filename" fxLayout="row" fxLayoutAlign="start center">
+                            <app-doc-icon *ngIf="document.type === 'folder'" fileName="folder" [size]="24"></app-doc-icon>
+                            <app-doc-icon *ngIf="document.type === 'file'" [fileName]="document.file_name" [size]="24"></app-doc-icon>
+                            <span>{{ document.file_name }}</span>
+                        </div>
+                    </div>
+                    <div class="app-documents-list__col col-date">{{ document.created_at }}</div>
+                    <div class="app-documents-list__col col-size">{{ document.type === 'file' ? (document.file_size | fileSize) : '' }}</div>
+                    <div class="app-documents-list__col col-action">
+                        <div class="col-action__holder" appClickStopPropagation fxLayout="row" fxLayoutAlign="end center" *ngIf="document.id">
+                            <button class="btn btn-icon" [appTooltip]="'Preuzmi'" *ngIf="document.type === 'file'" (click)="download(document)">
+                                <span class="material-symbols-outlined">download</span>
+                            </button>
+                            <button class="btn btn-icon" [appTooltip]="'Premesti'" (click)="move(document)">
+                                <span class="material-symbols-outlined">drive_file_move</span>
+                            </button>
+                            <button class="btn btn-icon" [appTooltip]="'Preimenuj'" (click)="rename(document)">
+                                <span class="material-symbols-outlined">border_color</span>
+                            </button>
+                            <button class="btn btn-icon" [appTooltip]="'Obriši'" (click)="remove(document)">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

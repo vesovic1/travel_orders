@@ -1,0 +1,26 @@
+<div class="confirmation-modal">
+    <h2 mat-dialog-title>{{ data.title }}</h2>
+
+    <div class="content">
+        <p [innerHTML]="data.content"></p>
+        <div class="app-form-element" *ngIf="hasCheckbox">
+            <app-form-checkbox
+                [formControl]="getFormControl(checkboxFormControl)">
+                {{ checkboxLabel }}
+            </app-form-checkbox>
+        </div>
+    </div>
+
+    <div fxlayout="row" fxLayoutAlign="end center">
+        <button class="btn btn-bordered" (click)="close()">
+            {{ closeButton }}
+        </button>
+        <button class="btn"
+            [class.btn-primary]="theme === ''"
+            [class.btn-danger]="theme === 'danger'"
+            [class.btn-success]="theme === 'success'"
+            (click)="save()">
+            {{ confirmButton }}
+        </button>
+    </div>
+</div>

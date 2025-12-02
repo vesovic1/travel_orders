@@ -1,0 +1,145 @@
+@mixin colWidth($width) {
+    width: $width;
+    min-width: $width;
+    max-width: $width;
+}
+
+@mixin columns {
+
+    .col-wp5 {
+        width: 5%;
+    }
+    .col-wp10 {
+        width: 10%;
+    }
+    .col-wp15 {
+        width: 15%;
+    }
+    .col-wp20 {
+        width: 20%;
+    }
+    .col-wp25 {
+        width: 25%;
+    }
+    .col-wp30 {
+        width: 30%;
+    }
+    .col-wp35 {
+        width: 35%;
+    }
+    .col-wp40 {
+        width: 40%;
+    }
+    .col-wp45 {
+        width: 45%;
+    }
+    .col-wp50 {
+        width: 50%;
+    }
+    .col-wp55 {
+        width: 55%;
+    }
+    .col-wp60 {
+        width: 60%;
+    }
+    .col-wp65 {
+        width: 65%;
+    }
+    .col-wp70 {
+        width: 70%;
+    }
+    .col-wp75 {
+        width: 75%;
+    }
+    .col-wp80 {
+        width: 80%;
+    }
+    .col-wp85 {
+        width: 85%;
+    }
+    .col-wp90 {
+        width: 90%;
+    }
+    .col-wp95 {
+        width: 95%;
+    }
+
+    .col-w0 {
+        width: 100%;
+    }
+    .col-w30 {
+        @include colWidth(30px);
+    }
+    .col-w40 {
+        @include colWidth(40px);
+    }
+    .col-w50 {
+        @include colWidth(50px);
+    }
+    .col-w70 {
+        @include colWidth(70px);
+    }
+    .col-w80 {
+        @include colWidth(80px);
+    }
+    .col-w90 {
+        @include colWidth(90px);
+    }
+    .col-w100 {
+        @include colWidth(100px);
+    }
+    .col-w120 {
+        @include colWidth(120px);
+    }
+    .col-w130 {
+        @include colWidth(130px);
+    }
+    .col-w135 {
+        @include colWidth(135px);
+    }
+    .col-w140 {
+        @include colWidth(140px);
+    }
+    .col-w150 {
+        @include colWidth(150px);
+    }
+    .col-w160 {
+        @include colWidth(160px);
+    }
+    .col-w170 {
+        @include colWidth(170px);
+    }
+    .col-w180 {
+        @include colWidth(180px);
+    }
+    .col-w200 {
+        @include colWidth(200px);
+    }
+    .col-w250 {
+        @include colWidth(250px);
+    }
+    .col-w270 {
+        @include colWidth(270px);
+    }
+    .col-w300 {
+        @include colWidth(300px);
+    }
+    .col-w320 {
+        @include colWidth(300px);
+    }
+    .col-w350 {
+        @include colWidth(350px);
+    }
+    .col-w400 {
+        @include colWidth(400px);
+    }
+    .col-w500 {
+        @include colWidth(500px);
+    }
+    .col-w600 {
+        @include colWidth(600px);
+    }
+    .col-w800 {
+        @include colWidth(800px);
+    }
+}

@@ -1,0 +1,222 @@
+<app-menu-top menu="components"></app-menu-top>
+<app-page>
+    <div class="app-page-card">
+                
+        <h2>Menu</h2>
+
+        <div fxLayout="column">
+            <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="app-drop-menu" cdkMenu>
+                    <div class="app-drop-menu__header">
+                        <div class="title" fxLayout="row" fxlayoutAlign="start center">
+                            <span class="name">Group by</span>
+                            <span class="material-symbols-outlined">help</span>
+                        </div>
+                    </div>
+                    <div class="app-drop-menu__content">
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">refresh</span>
+                            <span>Refresh</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">settings</span>
+                            <span>Settings</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">help</span>
+                            <span>Help</span>
+                        </div>
+                        <div class="app-drop-menu-divider"></div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Sign out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+                <button class="btn btn-primary" [cdkMenuTriggerFor]="filterMenu">Open menu</button>
+            </div>
+
+            <ng-template #filterMenu>
+                <div class="app-drop-menu" cdkMenu>
+                    <div class="app-drop-menu__header">
+                        <div class="title" fxLayout="row" fxlayoutAlign="start center">
+                            <span class="name">Filter by</span>
+                            <span class="material-symbols-outlined">help</span>
+                        </div>
+                    </div>
+                    <div class="app-drop-menu__content">
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">refresh</span>
+                            <span>Refresh</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">settings</span>
+                            <span>Settings</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">help</span>
+                            <span>Help</span>
+                        </div>
+                        <div class="app-drop-menu-divider"></div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Sign out</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+                <button class="btn btn-primary" [cdkMenuTriggerFor]="nestedMenu">Open nested menu</button>
+            </div>
+
+            <ng-template #nestedMenu>
+                <div class="app-drop-menu" cdkMenu>
+                    <div class="app-drop-menu__content">
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">refresh</span>
+                            <span>Refresh</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center" [cdkMenuTriggerFor]="nestedSubMenu">
+                            <span class="material-symbols-outlined">settings</span>
+                            <span fxFlex>Settings</span>
+                            <span class="material-symbols-outlined">chevron_right</span>
+
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">help</span>
+                            <span>Help</span>
+                        </div>
+                        <div class="app-drop-menu-divider"></div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Sign out</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template #nestedSubMenu>
+                <div class="app-drop-menu nested" cdkMenu>
+                    <div class="app-drop-menu__content">
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">translate</span>
+                            <span>Language</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">euro</span>
+                            <span>Currency</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center" [cdkMenuTriggerFor]="nestedSubMenu2">
+                            <span class="material-symbols-outlined">palette</span>
+                            <span fxFlex>Theme</span>
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #nestedSubMenu2>
+                <div class="app-drop-menu nested" cdkMenu>
+                    <div class="app-drop-menu__content">
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">format_paint</span>
+                            <span>Theme default</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">format_paint</span>
+                            <span>Theme accent</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">format_paint</span>
+                            <span>Theme primary</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">format_paint</span>
+                            <span>Theme indigo</span>
+                        </div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">format_paint</span>
+                            <span>Theme pink</span>
+                        </div>
+                        <div class="app-drop-menu-divider"></div>
+                        <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                            <span class="material-symbols-outlined">settings</span>
+                            <span>Customize</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+
+        <h2>Dialog (Default)</h2>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" (click)="openModal();">Open dialog</button>
+        </div>
+
+        <h2>Dialog (Confirmation)</h2>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" (click)="openConfirmationModal();">Open default</button>
+            <button class="btn btn-danger" (click)="openConfirmationRmoveModal();">Open danger</button>
+            <button class="btn btn-success" (click)="openConfirmationSuccessModal();">Open success</button>
+        </div>
+
+        <h2>Right click menu</h2>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" [cdkContextMenuTriggerFor]="rClickMenu">Right click</button>
+        </div>
+
+        <ng-template #rClickMenu>
+            <div class="app-drop-menu" cdkMenu>
+                <div class="app-drop-menu__content">
+                    <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        <span>Copy</span>
+                    </div>
+                    <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                        <span class="material-symbols-outlined">content_cut</span>
+                        <span>Cut</span>
+                    </div>
+                    <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                        <span class="material-symbols-outlined">drive_file_rename_outline</span>
+                        <span>Rename</span>
+                    </div>
+                    <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                        <span class="material-symbols-outlined">preview</span>
+                        <span>Preview</span>
+                    </div>
+                    <div class="app-drop-menu-item" cdkMenuItem fxLayout="row" fxLayoutAlign="start center">
+                        <span class="material-symbols-outlined">delete</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <h2>Notification popup</h2>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" (click)="notification('info')">Open Info</button>
+            <button class="btn btn-success" (click)="notification('success')">Open success</button>
+            <button class="btn btn-bordered" (click)="notification('warn')">Open warn</button>
+            <button class="btn btn-danger" (click)="notification('error')">Open error</button>
+        </div>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" (click)="notificationDirection('top-left')">Open Top Left</button>
+            <button class="btn btn-primary" (click)="notificationDirection('top-center')">Open Top Center</button>
+            <button class="btn btn-primary" (click)="notificationDirection('top-right')">Open Top Right</button>
+        </div>
+
+        <div class="test-page-row" fxLayout="row" fxLayoutAlign="start start">
+            <button class="btn btn-primary" (click)="notificationDirection('bottom-left')">Open Bottom Left</button>
+            <button class="btn btn-primary" (click)="notificationDirection('bottom-center')">Open Bottom Center</button>
+            <button class="btn btn-primary" (click)="notificationDirection('bottom-right')">Open Bottom Right</button>
+        </div>
+    </div>
+</app-page>

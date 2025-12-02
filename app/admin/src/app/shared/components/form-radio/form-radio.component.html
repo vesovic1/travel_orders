@@ -1,0 +1,10 @@
+<div class="app-form-radio {{ orientation }}" [class.disabled]="isDisabled">
+	<label class="container" *ngFor="let option of options; let i = index">
+        <input 
+            type="radio" 
+            [value]="option.value"
+            [formControl]="formControl"
+            name="{{groupName}}" />{{ option.text }}
+        <span class="checkmark"></span>
+    </label>
+</div>

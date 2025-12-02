@@ -1,0 +1,63 @@
+.documents-preview-modal {
+    .app-modal__header {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        padding: 0px;
+        z-index: 1000;
+        .btn {
+            border-radius: 50%;
+            color: var(--color-black);
+        }
+    }
+    .app-modal__content {
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        background: var(--color-dark-800);
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        overflow: hidden;
+        .app-modal__loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            display: block;
+            margin: 0px auto;
+            object-fit: contain;
+        }
+    }
+    &.pdf-viewer {
+        .app-modal__content {
+            padding: 0px;
+        }
+    }
+    .undefined-preview {
+        background: var(--color-white);
+        width: 280px;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+        span {
+            color: var(--color-warning);
+            font-size: 28px;
+        }
+        p {
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
+}
